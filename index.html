@@ -25,13 +25,13 @@
         .section-dark p, .section-dark ul, .section-dark li { 
             color: #F7FAFC; 
         }
-        /* Removed .section-dark .text-slate-400 specific rule to let p inherit #F7FAFC */
-        /* .section-dark .text-slate-400 { color: #CBD5E1; } */ /* This line is now commented out/removed */
+        /* Specific rule for .text-slate-400 in dark sections was removed to allow p to inherit #F7FAFC */
+        /* .section-dark .text-slate-400 { color: #CBD5E1; } */ 
 
         .section-dark .text-slate-500 { color: #718096; } 
         .section-dark .text-slate-100 { color: #F7FAFC; } 
         .section-dark .profile-link { 
-            color: #F7FAFC; /* UPDATED from #60a5fa to be white-like */
+            color: #F7FAFC; /* Ensures profile links in dark sections are white-like */
         } 
         .section-dark .border-slate-700 { border-color: #4A5568; } 
         
@@ -41,8 +41,7 @@
         }
         .section-dark .item-card:hover { border-color: #38bdf8; }
         .section-dark .item-card h3 { color: #F7FAFC; } 
-        /* .section-dark .item-card .text-slate-400 would now inherit general .section-dark p or li color if not for specific Tailwind class on element */
-        .section-dark .item-card .text-sky-400 { color: #63b3ed; } 
+        .section-dark .item-card .text-sky-400 { color: #63b3ed; } /* For specific sky-colored text if used in item-card */
         
         .section-dark .connect-link-card {
             background-color: #2D3748;
@@ -78,7 +77,7 @@
             font-weight: 700;
         }
         .nav-link {
-            /* UPDATED default text color to white, hover to a very light gray (slate-200) */
+            /* Navigation links are white, hover to very light gray (slate-200) */
             @apply px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-slate-700 hover:text-slate-200 transition-colors duration-150 ease-in-out relative;
         }
         .nav-link:hover::after, .nav-link.active::after {
@@ -98,15 +97,16 @@
 
 
         /* Section Title Styling */
-        .section-title { 
+        .section-title { /* For titles on light backgrounds */
             color: #2d3748; 
             font-family: 'Poppins', sans-serif;
             font-weight: 700; 
         }
+        /* Titles in .section-dark will use .section-dark .section-title rule (color: #F7FAFC) */
 
 
         /* Hero Section Styling */
-        #hero {
+        #hero { /* This section has .section-dark class */
             min-height: 60vh;
             display: flex;
             flex-direction: column;
@@ -116,7 +116,7 @@
         #hero img.rounded-full {
             border-color: #38bdf8; 
         }
-        #hero h1.text-white { 
+        #hero h1.text-white { /* This h1 is explicitly text-white via Tailwind */
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2.8rem; 
@@ -124,7 +124,9 @@
         @media (min-width: 640px) { #hero h1.text-white { font-size: 3.5rem; } }
         @media (min-width: 1024px) { #hero h1.text-white { font-size: 4rem; } }
 
-        #hero p.text-slate-400 { /* Paragraphs with .text-slate-400 in hero (a .section-dark) will inherit .section-dark p color: #F7FAFC due to removal of specific .section-dark .text-slate-400 rule */
+        #hero p.text-slate-400 { 
+            /* This p has class .text-slate-400. In .section-dark, it will inherit from .section-dark p {color: #F7FAFC;} */
+            /* as the specific .section-dark .text-slate-400 rule was removed. */
             font-size: 1.25rem;
         }
         @media (min-width: 640px) { #hero p.text-slate-400 { font-size: 1.5rem; } }
@@ -149,39 +151,40 @@
 
 
         /* General Link Styling */
-        .profile-link { /* Used in publication links etc. on light backgrounds */
+        .profile-link { /* For links on light backgrounds */
             @apply text-sky-500 hover:text-sky-400 hover:underline transition-colors duration-150;
         }
-        /* Color for .profile-link in dark sections is now #F7FAFC */
+        /* Color for .profile-link in .section-dark is #F7FAFC (see .section-dark .profile-link rule) */
 
 
         /* Research Interest Tags Styling */
         .tag {
             @apply inline-flex items-center justify-center bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm shadow-sm;
         }
-        .section-dark .tag {
+        .section-dark .tag { /* For tags if used in a .section-dark */
              @apply bg-sky-700 text-sky-100;
         }
 
 
         /* Item Card (Publications, Awards, Books) Styling */
-        .item-card {
+        .item-card { /* General item-card styling, mostly for light backgrounds */
             @apply p-4 mb-4; 
             border-bottom: 1px solid #e2e8f0; 
         }
         .item-card:last-child { border-bottom: none; }
         
-        .item-card h3 { 
+        .item-card h3 { /* For item-card h3 on light backgrounds */
             @apply font-semibold text-lg;
             color: #1a202c; 
         }
+        /* For h3 in .section-dark .item-card, color is #F7FAFC */
         
-        .item-card .text-slate-400 { color: #718096; } 
-        .item-card .text-sky-400 { color: #3182ce; } 
-        .item-card .text-slate-500 { color: #4A5568; } 
+        .item-card .text-slate-400 { color: #718096; } /* For specific deemphasized text in item-cards on light bg */
+        .item-card .text-sky-400 { color: #3182ce; } /* For specific sky text in item-cards on light bg */
+        .item-card .text-slate-500 { color: #4A5568; } /* For specific slate text in item-cards on light bg */
 
 
-        /* Connect & Explore Link Cards */
+        /* Connect & Explore Link Cards for light backgrounds */
         .connect-link-card { 
             @apply bg-slate-100 rounded-lg border border-slate-300 hover:border-sky-500 transition-all duration-200 hover:shadow-lg flex flex-col items-center justify-center p-6 text-center hover:bg-slate-200;
             min-height: 140px;
@@ -189,6 +192,7 @@
         }
         .connect-link-card p { color: #1A202C !important; } 
         .connect-link-card .group-hover\:text-sky-400:hover { color: #38bdf8 !important; } 
+        /* For .connect-link-card within .section-dark, specific rules apply for bg and text color */
 
 
         /* Sidebar Twitter Card Container */
@@ -203,7 +207,7 @@
             border-bottom: 1px solid #e2e8f0; 
             @apply p-6 font-semibold text-xl; 
         }
-        .section-dark #twitter-card-container { 
+        .section-dark #twitter-card-container { /* If twitter card is ever placed in a .section-dark */
             background-color: #2D3748;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
@@ -221,9 +225,9 @@
         ::-webkit-scrollbar-thumb:hover { background: #38bdf8; } 
 
         /* Footer */
-        footer {
+        footer { /* Footer has .section-dark styles implicitly via its background */
             background-color: #1A202C; 
-            color: #CBD5E1; 
+            color: #CBD5E1; /* Footer text color kept as a lighter gray, not pure white for slight differentiation */
         }
         footer .border-slate-700 { border-color: #4A5568; }
 
@@ -287,7 +291,8 @@
                      class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover shadow-2xl mx-auto mb-8 border-4 ring-4 ring-sky-500/30"
                      onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/94a3b8?text=S.I.';">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3">Shinji Izuka, M.D., Ph.D.</h1>
-                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p> <div class="space-x-4">
+                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p> 
+                <div class="space-x-4">
                     <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="inline-block font-semibold py-3 px-6 shadow-lg">
                         researchmap
                     </a>
@@ -387,8 +392,7 @@
                         <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Awards & Grants</h2>
                         <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
                             <div>
-                                <h3 class="text-2xl font-semibold mb-6">Awards and Honors</h3>
-                                <ul class="space-y-4">
+                                <h3 class="text-2xl font-semibold mb-6">Awards and Honors</h3> <ul class="space-y-4">
                                     <li class="item-card">JCR 2025 Excellent Abstract Award, Japan College of Rheumatology (Apr 2025)</li>
                                     <li class="item-card">Tadamitsu Kishimoto International Travel Award (Nov 2024)</li>
                                     <li class="item-card">EMEUNET Top 10 Abstracts at ACR 2024 (Nov 2024)</li>
@@ -404,8 +408,7 @@
                                 <p class="mt-5 text-sm text-slate-400">For a full list, please see <a href="https://researchmap.jp/shinji04/awards" target="_blank" rel="noopener noreferrer" class="profile-link">researchmap</a>.</p> 
                             </div>
                             <div>
-                                <h3 class="text-2xl font-semibold mb-6">Grants and Funding</h3>
-                                <ul class="space-y-4">
+                                <h3 class="text-2xl font-semibold mb-6">Grants and Funding</h3> <ul class="space-y-4">
                                     <li class="item-card">
                                         <p class="font-medium">Stratification of rheumatic diseases and search for prognostic factors using large-scale multi-omics data.</p>
                                         <p class="text-sm mt-1">Japan Society for the Promotion of Science (JSPS) - Grant-in-Aid for JSPS Fellows (DC1)</p>
@@ -634,7 +637,7 @@
                             twttr.widgets.load(entry.target);
                         }
                     }
-                     observer.unobserve(entry.target);
+                     observer.unobserve(entry.target); // Optional: stop observing after animation
                 }
             });
         }, { threshold: 0.1 });
