@@ -29,10 +29,10 @@
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -2px;
+            bottom: -2px; /* Positioned slightly below the link */
             width: 0;
             height: 2px;
-            background-color: #38bdf8;
+            background-color: #38bdf8; /* Sky blue accent */
             transition: all 0.3s ease-out;
             transform: translateX(-50%);
         }
@@ -40,7 +40,7 @@
             width: 60%;
         }
          .nav-link.active::after {
-            width: 80%;
+            width: 80%; /* Make active link underline more prominent */
         }
 
         .profile-link {
@@ -51,25 +51,25 @@
             border: 1px solid transparent; /* For hover effect */
         }
         .card:hover {
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.4); /* Shadow + Glow */
-            border-color: #38bdf8;
+            transform: translateY(-5px) scale(1.01); /* Subtle lift and scale */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.4); /* Enhanced shadow + Glow effect */
+            border-color: #38bdf8; /* Sky blue border on hover */
         }
         .tag {
-            @apply inline-flex items-center justify-center bg-sky-500 text-white px-3 py-1 rounded-full shadow-md h-8 w-8; /* Fixed size for emoji circle */
+            /* Styling for the emoji containers in Research Interests */
+            @apply inline-flex items-center justify-center bg-sky-500 text-white px-3 py-1 rounded-full shadow-md h-8 w-8 text-base; /* Fixed size for emoji circle, adjusted text size */
         }
         .item-card { /* Generic class for publication, award, book items */
             @apply p-4 bg-slate-700 rounded-lg border border-slate-600 hover:border-sky-500 transition-all duration-200 hover:shadow-lg;
         }
         .connect-link-card {
+            /* Styling for cards in the "Connect & Explore" section */
             @apply bg-slate-700 rounded-lg border border-slate-600 hover:border-sky-500 transition-all duration-200 hover:shadow-lg flex flex-col items-center justify-center p-6 text-center hover:bg-slate-600;
-            /* Ensure a decent minimum size for clickability, especially on smaller grid columns */
-            min-height: 140px; /* Adjust as needed */
-            width: 100%; /* Ensure it takes full width of its grid cell */
+            min-height: 140px; 
+            width: 100%; 
         }
 
-
-        /* Custom scrollbar */
+        /* Custom scrollbar for a more integrated look */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -81,7 +81,7 @@
             border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #0ea5e9; /* sky-500 */
+            background: #0ea5e9; /* sky-500 for hover */
         }
     </style>
 </head>
@@ -129,9 +129,11 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <section id="hero" class="mb-20 text-center pt-8">
-            <img src="image_c07b11.jpeg" alt="Shinji Izuka Profile Photo" class="rounded-full h-52 w-52 sm:h-60 sm:w-60 object-cover shadow-2xl mx-auto mb-8 border-4 border-sky-500/70 ring-4 ring-sky-500/30" onerror="this.onerror=null; this.src='https://placehold.co/240x240/1e293b/94a3b8?text=S.I.';">
+            <img src="image_c07b11.jpeg" alt="Shinji Izuka Profile Photo" 
+                 class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover shadow-2xl mx-auto mb-8 border-4 border-sky-500/70 ring-4 ring-sky-500/30" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/94a3b8?text=S.I.';">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3">Shinji Izuka, M.D., Ph.D.</h1>
-            <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Bioinformatician | Clinical Researcher</p>
+            <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p>
             <div class="space-x-4">
                 <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-sky-500/50 transition-all duration-300 transform hover:scale-105">
                     researchmap
@@ -152,7 +154,7 @@
                     <strong class="font-semibold text-slate-100">Specialty:</strong> Rheumatologist
                 </p>
                 <p class="mb-1 text-lg text-slate-300">
-                    <strong class="font-semibold text-slate-100">Degree:</strong> Ph.D. in Medical Science
+                    <strong class="font-semibold text-slate-100">Degree:</strong> M.D., Ph.D. in Medicine
                 </p>
                 <p class="mt-6 text-slate-400 leading-relaxed text-lg">
                     I am dedicated to understanding the pathogenesis and developing novel treatments for rheumatic diseases, particularly autoimmune conditions like myositis and Systemic Lupus Erythematosus (SLE). My research integrates clinical information with bioinformatics techniques to stratify patients and advance personalized medicine. I recently completed my Ph.D., focusing on these innovative approaches.
@@ -164,23 +166,23 @@
             <h2 class="section-title-gradient text-3xl sm:text-4xl mb-8 border-b-2 border-slate-700 pb-4">Research Interests</h2>
             <ul class="space-y-6 text-slate-300 text-lg">
                 <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
-                    <span class="tag text-xl">🧬</span>
+                    <span class="tag">🧬</span>
                     <p>Application of Bioinformatics and Machine Learning in Rheumatic Diseases</p>
                 </li>
                 <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
-                    <span class="tag text-xl">📊</span>
+                    <span class="tag">📊</span>
                     <p>Stratification of rheumatic diseases and search for prognostic factors using large-scale multi-omics data</p>
                 </li>
                 <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
-                    <span class="tag text-xl">💪</span>
+                    <span class="tag">💪</span>
                     <p>Pathogenesis of Idiopathic Inflammatory Myopathies (IIMs), focusing on the role of monocytes/macrophages</p>
                 </li>
                 <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
-                    <span class="tag text-xl">🦋</span>
+                    <span class="tag">🦋</span>
                     <p>Pathophysiological analysis and therapeutic target exploration in Systemic Lupus Erythematosus (SLE)</p>
                 </li>
                 <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
-                    <span class="tag text-xl">📜</span>
+                    <span class="tag">📜</span>
                     <p>Transcriptomic analysis in immune-mediated diseases</p>
                 </li>
             </ul>
@@ -311,7 +313,7 @@
                      <svg class="w-5 h-5 text-sky-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     Member, International Myositis Assessment & Clinical Studies Group (IMACS) (2022 - Present)
                 </li>
-                 <li class="flex items-center">
+                <li class="flex items-center">
                      <svg class="w-5 h-5 text-sky-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     Member, EUROPEAN LUPUS SOCIETY (2019 - Present)
                 </li>
@@ -341,7 +343,7 @@
                     <span class="text-2xl mb-2">🦋</span>
                     <p class="font-semibold text-slate-200 group-hover:text-sky-400 transition-colors">Bluesky</p>
                 </a>
-                 <a href="http://ryumachi.umin.jp/" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                <a href="http://ryumachi.umin.jp/" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
                      <span class="text-2xl mb-2">🏥</span>
                     <p class="font-semibold text-slate-200 group-hover:text-sky-400 transition-colors">Dept. Website (UoT)</p>
                 </a>
@@ -357,40 +359,43 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle functionality
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth scroll & active nav link
+        // Smooth scroll for navigation links and active link highlighting
         const navLinks = document.querySelectorAll('header nav a.nav-link');
         const mobileNavLinks = document.querySelectorAll('#mobile-menu a.nav-link');
-        const allNavLinks = [...navLinks, ...mobileNavLinks];
-        const sections = document.querySelectorAll('main section[id]');
+        const allNavLinks = [...navLinks, ...mobileNavLinks]; // Combine desktop and mobile nav links
+        const sections = document.querySelectorAll('main section[id]'); // Get all sections with an ID
 
-
+        // Add click event listeners to all navigation links for smooth scrolling
         allNavLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                e.preventDefault(); // Prevent default anchor behavior
                 
-                const targetID = this.getAttribute('href').substring(1);
+                const targetID = this.getAttribute('href').substring(1); // Get target section ID
                 const targetElement = document.getElementById(targetID);
 
                 if (targetElement) {
-                    const headerOffset = 80; // Height of sticky header
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    const headerOffset = 80; // Height of the sticky header
+                    const elementPosition = targetElement.getBoundingClientRect().top; // Position relative to viewport
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset; // Calculate final scroll position
 
+                    // Scroll smoothly to the target element
                     window.scrollTo({
                          top: offsetPosition,
                          behavior: "smooth"
                     });
                 }
+                // Hide mobile menu if open after clicking a link
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
+                // Update active state for nav links
                 allNavLinks.forEach(link => link.classList.remove('active'));
                 const desktopLink = document.querySelector(`header nav a.nav-link[href="#${targetID}"]`);
                 if (desktopLink) desktopLink.classList.add('active');
@@ -399,32 +404,37 @@
             });
         });
         
+        // Function to update the active navigation link based on scroll position
         function updateActiveNavLink() {
             let currentSectionId = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 90; 
+                const sectionTop = section.offsetTop - 90; // Adjust for sticky header and some leeway
                 const sectionBottom = sectionTop + section.offsetHeight;
                 if (pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
                     currentSectionId = section.getAttribute('id');
                 }
             });
 
+            // Fallback logic if no section is perfectly matched (e.g., at the very top or bottom)
             if (!currentSectionId && sections.length > 0) {
                  if (pageYOffset < sections[0].offsetTop - 90) { 
-                    currentSectionId = sections[0].getAttribute('id');
+                    currentSectionId = sections[0].getAttribute('id'); // Default to first section if above it
                 } else { 
+                    // If scrolled past the last section, keep the last section active
                     for (let i = sections.length - 1; i >= 0; i--) { 
                         if (pageYOffset >= sections[i].offsetTop - 90) {
                             currentSectionId = sections[i].getAttribute('id');
                             break;
                         }
                     }
-                    if(!currentSectionId && sections.length > 0) {
+                     // If somehow still no ID, default to last section if scrolled to bottom
+                    if(!currentSectionId && (window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 20) { // 20px buffer
                         currentSectionId = sections[sections.length -1].getAttribute('id');
                     }
                 }
             }
-
+            
+            // Update active class on all navigation links
             allNavLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').substring(1) === currentSectionId) {
@@ -433,30 +443,33 @@
             });
         }
 
+        // Event listeners for updating active nav link on scroll and page load
         window.addEventListener('scroll', updateActiveNavLink);
         window.addEventListener('load', updateActiveNavLink); 
 
-
+        // Set current year in the footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+        // Intersection Observer for card animations on scroll
         const cards = document.querySelectorAll('.card');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Fade in and slide up animation
                     entry.target.style.opacity = 1;
                     entry.target.style.transform = 'translateY(0) scale(1)';
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1 }); // Trigger when 10% of the card is visible
 
+        // Apply initial styles for animation and observe each card
         cards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(30px) scale(0.98)';
-            card.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            card.style.opacity = 0; // Start transparent
+            card.style.transform = 'translateY(30px) scale(0.98)'; // Start slightly down and scaled down
+            card.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'; // Smooth transition
             observer.observe(card);
         });
     </script>
 
 </body>
 </html>
-
