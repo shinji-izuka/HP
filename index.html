@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shinji Izuka - Personal Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* UPDATED: Font, background, and text color */
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFFFF; /* Light background for the page */
+            color: #333333; /* Darker text for readability */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- THEME CLASSES FOR SECTIONS --- */
+        .section-dark {
+            background-color: #1A202C; /* Dark Gray/Blue */
+            color: #F7FAFC; /* Lighter text - UPDATED from #E2E8F0 for better contrast */
+        }
+        .section-dark .section-title,
+        .section-dark h1, .section-dark h2, .section-dark h3,
+        .section-dark p, .section-dark ul, .section-dark li { /* Ensure all text in dark section is light */
+            color: #F7FAFC; /* Lighter text - UPDATED from #E2E8F0 */
+        }
+        .section-dark .text-slate-400 { color: #A0AEC0; } /* Lighter version of slate-400 */
+        .section-dark .text-slate-500 { color: #718096; }
+        .section-dark .text-slate-100 { color: #F7FAFC; } /* This now matches the base .section-dark color */
+        .section-dark .profile-link { color: #60a5fa; } /* Lighter sky blue for links */
+        .section-dark .border-slate-700 { border-color: #4A5568; } /* Darker border */
+        
+        .section-dark .item-card {
+            background-color: #2D3748; /* Slightly lighter than section bg */
+            border-color: #4A5568;
+            /* Text color for item-card contents will be inherited from .section-dark li or .section-dark p, now #F7FAFC */
+        }
+        .section-dark .item-card:hover { border-color: #38bdf8; }
+        .section-dark .item-card h3 { color: #F7FAFC; } /* Already very light, consistent with new base */
+        .section-dark .item-card .text-slate-400 { color: #A0AEC0; } /* Specific slate color for less emphasis */
+        .section-dark .item-card .text-sky-400 { color: #63b3ed; } /* Specific sky color */
+        
+        .section-dark .connect-link-card {
+            background-color: #2D3748;
+            border-color: #4A5568;
+        }
+        .section-dark .connect-link-card:hover {
+            border-color: #38bdf8;
+            background-color: #4A5568;
+        }
+        .section-dark .connect-link-card p {
+            color: #F7FAFC !important; /* UPDATED from #E2E8F0 for brighter text */
+        }
+         .section-dark .connect-link-card .group-hover\:text-sky-400:hover { color: #38bdf8 !important; }
+
+
+        .section-light-gray {
+            background-color: #f7fafc; /* Very light gray */
+            color: #333333;
+        }
+        /* --- END THEME CLASSES --- */
+
+        /* Header Styling */
+        header {
+            background-color: #1A202C; /* Dark Gray/Blue, similar to Konig's black header */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            /* backdrop-filter: blur(xl); /* Can be removed if solid bg is preferred */
+        }
+        header .hero-title { /* Your name in header */
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors duration-150 ease-in-out relative;
+            /* text-slate-200 is #E2E8F0, which is quite light. hover:text-white is pure white. This is good. */
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px; /* Adjusted to ensure visibility if needed */
+            width: 0;
+            height: 2px;
+            background-color: #38bdf8; /* Sky blue accent */
+            transition: width 0.2s ease-out;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active::after { width: 100%; }
+        #mobile-menu-button svg { stroke: #FFFFFF; }
+        #mobile-menu { background-color: #2D3748; /* Slightly lighter dark for mobile menu dropdown */ }
+
+
+        /* Section Title Styling (Removed Gradient) */
+        .section-title { /* Replaces .section-title-gradient */
+            color: #2d3748; /* Dark gray for titles on light bg */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700; /* Bold */
+        }
+        /* color for titles in dark sections is handled by .section-dark .section-title (now #F7FAFC) */
+
+
+        /* Hero Section Styling */
+        #hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #hero img.rounded-full {
+            border-color: #38bdf8; 
+        }
+        #hero h1.text-white { 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem; 
+        }
+        @media (min-width: 640px) { #hero h1.text-white { font-size: 3.5rem; } }
+        @media (min-width: 1024px) { #hero h1.text-white { font-size: 4rem; } }
+
+        #hero p.text-slate-400 { 
+            font-size: 1.25rem;
+            /* This text-slate-400 in hero (which is .section-dark) will use .section-dark .text-slate-400 { color: #A0AEC0; } */
+        }
+        @media (min-width: 640px) { #hero p.text-slate-400 { font-size: 1.5rem; } }
+
+        #hero .space-x-4 a {
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #hero a[href*="researchmap"] {
+            background-color: #38bdf8; color: white;
+        }
+        #hero a[href*="researchmap"]:hover {  background-color: #0ea5e9; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        #hero a[href*="scholar.google"] {
+            background-color: transparent; color: #38bdf8; border: 2px solid #38bdf8;
+        }
+        #hero a[href*="scholar.google"]:hover { background-color: #38bdf8; color: white; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+
+
+        /* General Link Styling */
+        .profile-link { 
+            @apply text-sky-500 hover:text-sky-400 hover:underline transition-colors duration-150;
+        }
+        /* color for .profile-link in dark sections is handled by .section-dark .profile-link { color: #60a5fa; } */
+
+
+        /* Research Interest Tags Styling (simplified) */
+        .tag {
+            @apply inline-flex items-center justify-center bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm shadow-sm;
+        }
+        .section-dark .tag { /* This applies if tags are used in a .section-dark directly */
+             @apply bg-sky-700 text-sky-100;
+        }
+
+
+        /* Item Card (Publications, Awards, Books) Styling */
+        .item-card {
+            @apply p-4 mb-4; 
+            border-bottom: 1px solid #e2e8f0; /* Light separator line for light theme cards */
+        }
+        .item-card:last-child { border-bottom: none; }
+        
+        /* .section-dark .item-card handled by theme styles (background, border, and text color inherited or specified) */
+        /* Example: text within .section-dark .item-card will now default to #F7FAFC unless more specific rules apply */
+
+        .item-card h3 { /* For item cards in light themes */
+            @apply font-semibold text-lg;
+            color: #1a202c; 
+        }
+        /* .section-dark .item-card h3 is specifically #F7FAFC */
+        
+        .item-card .text-slate-400 { color: #718096; } 
+        .item-card .text-sky-400 { color: #3182ce; } 
+        .item-card .text-slate-500 { color: #4A5568; } 
+
+
+        /* Connect & Explore Link Cards */
+        .connect-link-card { /* For light themes */
+            @apply bg-slate-100 rounded-lg border border-slate-300 hover:border-sky-500 transition-all duration-200 hover:shadow-lg flex flex-col items-center justify-center p-6 text-center hover:bg-slate-200;
+            min-height: 140px;
+            width: 100%;
+        }
+        .connect-link-card p { color: #1A202C !important; } /* For light themes */
+        .connect-link-card .group-hover\:text-sky-400:hover { color: #38bdf8 !important; } /* For light themes */
+        /* .section-dark .connect-link-card handled by theme styles (background, border, and text color by its p rule) */
+
+
+        /* Sidebar Twitter Card Container */
+        #twitter-card-container {
+            background-color: #f8f9fa; 
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03); 
+            overflow: hidden; 
+        }
+        #twitter-card-container h3 { 
+            color: #2d3748; 
+            border-bottom: 1px solid #e2e8f0; 
+            @apply p-6 font-semibold text-xl; 
+        }
+        .section-dark #twitter-card-container { /* If sidebar is within a dark section explicitly */
+            background-color: #2D3748;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .section-dark #twitter-card-container h3 { /* Title of Twitter card in dark section */
+            color: #FFFFFF; /* Ensuring this title is white if in dark section */
+            border-bottom-color: #4A5568;
+        }
+        .twitter-timeline { width: 100% !important; }
+
+
+        /* Custom scrollbar for a more integrated look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e2e8f0; } 
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; } 
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; } 
+
+        /* Footer */
+        footer {
+            background-color: #1A202C; /* Dark footer */
+            color: #A0AEC0; /* Light slate text - this is a specific shade, not affected by general .section-dark update */
+        }
+        footer .border-slate-700 { border-color: #4A5568; }
+
+
+        /* Card animation - target sections or specific animated elements */
+        .animated-section { 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body class="antialiased"> 
+    <header> 
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <h1 class="hero-title text-2xl sm:text-3xl font-bold"> Shinji Izuka
+                    </h1>
+                </div>
+                <nav class="hidden md:flex space-x-2">
+                    <a href="#about" class="nav-link active">About</a>
+                    <a href="#research" class="nav-link">Research</a>
+                    <a href="#publications" class="nav-link">Publications</a>
+                    <a href="#awards-grants" class="nav-link">Awards & Grants</a>
+                    <a href="#book-contributions" class="nav-link">Book Contributions</a>
+                    <a href="#activities" class="nav-link">Activities</a>
+                    <a href="#links" class="nav-link">Links</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="focus:outline-none">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block nav-link text-base active">About</a>
+                <a href="#research" class="block nav-link text-base">Research</a>
+                <a href="#publications" class="block nav-link text-base">Publications</a>
+                <a href="#awards-grants" class="block nav-link text-base">Awards & Grants</a>
+                <a href="#book-contributions" class="block nav-link text-base">Book Contributions</a>
+                <a href="#activities" class="block nav-link text-base">Activities</a>
+                <a href="#links" class="block nav-link text-base">Links</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="py-12"> 
+        <section id="hero" class="mb-12 text-center section-dark py-10 md:py-16"> 
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <img src="image_c07b11.jpeg" alt="Shinji Izuka Profile Photo"
+                     class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover shadow-2xl mx-auto mb-8 border-4 ring-4 ring-sky-500/30"
+                     onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/94a3b8?text=S.I.';">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3">Shinji Izuka, M.D., Ph.D.</h1>
+                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p> <div class="space-x-4">
+                    <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="inline-block font-semibold py-3 px-6 shadow-lg">
+                        researchmap
+                    </a>
+                    <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" rel="noopener noreferrer" class="inline-block font-semibold py-3 px-6 shadow-lg">
+                        Google Scholar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="lg:flex lg:gap-x-12 container mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="lg:w-2/3 space-y-12 md:space-y-16"> 
+                <section id="about" class="py-10 md:py-16 animated-section"> 
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 border-slate-300 pb-4">About Me</h2>
+                        <div>
+                            <p class="mb-4 text-lg">
+                                <strong class="font-semibold text-slate-700">Affiliation:</strong> Department of Allergy and Rheumatology, The University of Tokyo Hospital
+                            </p>
+                            <p class="mb-4 text-lg">
+                                <strong class="font-semibold text-slate-700">Specialty:</strong> Rheumatologist
+                            </p>
+                            <p class="mb-1 text-lg">
+                                <strong class="font-semibold text-slate-700">Degree:</strong> M.D., Ph.D. in Medicine
+                            </p>
+                            <p class="mt-6 text-slate-600 leading-relaxed text-lg">
+                                I am dedicated to understanding the pathogenesis and developing novel treatments for rheumatic diseases, particularly autoimmune conditions like myositis and Systemic Lupus Erythematosus (SLE). My research integrates clinical information with bioinformatics techniques to stratify patients and advance personalized medicine. I recently completed my Ph.D., focusing on these innovative approaches.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="research" class="py-10 md:py-16 section-light-gray animated-section"> 
+                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 border-slate-300 pb-4">Research Interests</h2>
+                        <ul class="space-y-6 text-lg">
+                            <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
+                                <span class="tag">🧬</span>
+                                <p>Application of Bioinformatics and Machine Learning in Rheumatic Diseases</p>
+                            </li>
+                            <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
+                                <span class="tag">📊</span>
+                                <p>Stratification of rheumatic diseases and search for prognostic factors using large-scale multi-omics data</p>
+                            </li>
+                            <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
+                                <span class="tag">💪</span>
+                                <p>Pathogenesis of Idiopathic Inflammatory Myopathies (IIMs), focusing on the role of monocytes/macrophages</p>
+                            </li>
+                            <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
+                                <span class="tag">🦋</span>
+                                <p>Pathophysiological analysis and therapeutic target exploration in Systemic Lupus Erythematosus (SLE)</p>
+                            </li>
+                            <li class="grid grid-cols-[max-content_1fr] gap-x-4 items-center">
+                                <span class="tag">📜</span>
+                                <p>Transcriptomic analysis in immune-mediated diseases</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="publications" class="py-10 md:py-16 animated-section">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 border-slate-300 pb-4">Selected Publications</h2>
+                        <p class="mb-8 text-slate-500">
+                            This is a list of my key publications. For a comprehensive list, please visit
+                            <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" rel="noopener noreferrer" class="profile-link">Google Scholar</a> or
+                            <a href="https://researchmap.jp/shinji04/published_papers" target="_blank" rel="noopener noreferrer" class="profile-link">researchmap</a>.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">Muscle Tissue Transcriptome of Idiopathic Inflammatory Myopathy Reflects the Muscle Damage Process by Monocytes and Presence of Skin Lesions.</h3>
+                                <p class="text-sm text-slate-500 mt-1">Izuka S, Umezawa N, Komai T, Sugimori Y, Kimura N, Mizoguchi F, Fujieda Y, et al.</p>
+                                <p class="text-sm italic text-sky-500 mt-1">Arthritis & Rheumatology. 2024 Sep 3.</p>
+                            </div>
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">Machine learning–driven immunophenotypic stratification of mixed connective tissue disease, corroborating the clinical heterogeneity.</h3>
+                                <p class="text-sm text-slate-500 mt-1">Izuka S, Komai T, Itamiya T, Ota M, Nagafuchi Y, Shoda H, Matsuki K, Fujio K.</p>
+                                <p class="text-sm italic text-sky-500 mt-1">Rheumatology (Oxford). 2024 Mar 13.</p>
+                            </div>
+                             <div class="item-card">
+                                <h3 class="font-semibold text-lg">The Role of Monocytes and Macrophages in Idiopathic Inflammatory Myopathies: Insights into Pathogenesis and Potential Targets.</h3>
+                                <p class="text-sm text-slate-500 mt-1">Izuka S, Komai T, Tsuchida Y, Tsuchiya H, Okamura T, Fujio K.</p>
+                                <p class="text-sm italic text-sky-500 mt-1">Frontiers in Immunology. 2025 Mar 20.</p>
+                            </div>
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">Acute exacerbation of rheumatoid arthritis–associated interstitial lung disease: clinical features and prognosis.</h3>
+                                <p class="text-sm text-slate-500 mt-1">Izuka S, Yamashita H, Iba A, Takahashi Y, Kaneko H.</p>
+                                <p class="text-sm italic text-sky-500 mt-1">Rheumatology (Oxford). 2021 May; 60(5):2348-2354.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="awards-grants" class="py-10 md:py-16 section-dark animated-section"> 
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Awards & Grants</h2> <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
+                            <div>
+                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Awards and Honors</h3> <ul class="space-y-4">
+                                    <li class="item-card">JCR 2025 Excellent Abstract Award, Japan College of Rheumatology (Apr 2025)</li>
+                                    <li class="item-card">Tadamitsu Kishimoto International Travel Award (Nov 2024)</li>
+                                    <li class="item-card">EMEUNET Top 10 Abstracts at ACR 2024 (Nov 2024)</li>
+                                    <li class="item-card">EMEUNET Top 10 Abstracts at EULAR 2024 (Jun 2024)</li>
+                                    <li class="item-card">JCR 2024 Excellent Abstract Award, Japan College of Rheumatology (Apr 2024)</li>
+                                    <li class="item-card">Ursula and Fritz Melchers Travel Award (Jan 2024)</li>
+                                    <li class="item-card">ACR-EULAR-APLAR Research Exchange Program (Nov 2023)</li>
+                                    <li class="item-card">Young Scientist, The 72nd Lindau Nobel Laureate Meeting (Physiology/Medicine) (Jun 2023)</li>
+                                    <li class="item-card">EULAR 2023 Abstract Award (Jun 2023)</li>
+                                    <li class="item-card">EMEUNET Top 10 Abstracts at EULAR 2023 (Jun 2023)</li>
+                                    <li class="item-card">JCR 2023 Excellent Abstract Award, Japan College of Rheumatology (Apr 2023)</li>
+                                </ul>
+                                <p class="mt-5 text-sm text-slate-400">For a full list, please see <a href="https://researchmap.jp/shinji04/awards" target="_blank" rel="noopener noreferrer" class="profile-link">researchmap</a>.</p> </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Grants and Funding</h3> <ul class="space-y-4">
+                                    <li class="item-card">
+                                        <p class="font-medium">Stratification of rheumatic diseases and search for prognostic factors using large-scale multi-omics data.</p>
+                                        <p class="text-sm mt-1">Japan Society for the Promotion of Science (JSPS) - Grant-in-Aid for JSPS Fellows (DC1)</p>
+                                        <p class="text-sm italic mt-1">Principal Investigator: Shinji Izuka</p>
+                                        <p class="text-sm mt-1">Period: April 2022 - March 2025</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="book-contributions" class="py-10 md:py-16 animated-section">
+                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 border-slate-300 pb-4">Book Contributions</h2>
+                        <div class="space-y-6">
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">"Kono Kanja-san Rheumatism/Kogenbyo kamo?" to Mayotta toki no Shindan no Kandokoro</h3>
+                                <p class="text-sm text-slate-500 mt-1">Series G Note, Yodosha. (Scheduled for April 22, 2025)</p>
+                                <p class="text-sm italic text-slate-600 mt-1">Contribution on differential diagnosis in general internal medicine for suspected rheumatic/collagen diseases.</p>
+                            </div>
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">Nankodo's Questions Frequently Asked by Patients in Internal Medicine Practice Vol.133 No.4</h3>
+                                <p class="text-sm text-slate-500 mt-1">Nankodo. (April 2024)</p>
+                                <p class="text-sm italic text-slate-600 mt-1">Contributed answers to common patient questions.</p>
+                            </div>
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">THE Internal Medicine Board Review Questions (Ver.2) 3 [with WEB version]</h3>
+                                <p class="text-sm text-slate-500 mt-1">Igaku-Shoin Ltd. (March 2024)</p>
+                                <p class="text-sm italic text-slate-600 mt-1">Contribution to a board review question book for internal medicine specialists.</p>
+                            </div>
+                            <div class="item-card">
+                                <h3 class="font-semibold text-lg">Rheumatology Journal (Ryumachi-ka) Vol.67 No.6</h3>
+                                <p class="text-sm text-slate-500 mt-1">Kagaku Hyoron Sha. (June 2022)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="activities" class="py-10 md:py-16 section-light-gray animated-section">
+                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 border-slate-300 pb-4">Professional Activities & Affiliations</h2>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                American College of Rheumatology (ACR) International Adviser (Dec 2024 - Present)
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                RMD Open Social Media Editor (2024 - Present)
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                American College of Rheumatology (ACR) Social Media Ambassador (2023 - Present)
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Annals of the Rheumatic Diseases Guest Social Media Editor (Nov 2024)
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Member, Japan College of Rheumatology
+                            </li>
+                            <li class="flex items-center">
+                                 <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Member, The Japanese Society of Internal Medicine
+                            </li>
+                            <li class="flex items-center">
+                                 <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Member, Japanese Society for Immunology (2023 - Present)
+                            </li>
+                            <li class="flex items-center">
+                                 <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Member, International Myositis Assessment & Clinical Studies Group (IMACS) (2022 - Present)
+                            </li>
+                            <li class="flex items-center">
+                                 <svg class="w-5 h-5 text-sky-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Member, EUROPEAN LUPUS SOCIETY (2019 - Present)
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="links" class="py-10 md:py-16 section-dark animated-section">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Connect & Explore</h2> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                                <span class="text-2xl mb-2">🔬</span>
+                                <p class="font-semibold group-hover:text-sky-400 transition-colors">researchmap (EN)</p>
+                            </a>
+                            <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                                <span class="text-2xl mb-2">🎓</span>
+                                <p class="font-semibold group-hover:text-sky-400 transition-colors">Google Scholar</p>
+                            </a>
+                            <a href="https://www.researchgate.net/profile/Shinji-Izuka" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                                <span class="text-2xl mb-2">🔗</span>
+                                <p class="font-semibold group-hover:text-sky-400 transition-colors">ResearchGate</p>
+                            </a>
+                            <a href="https://orcid.org/0000-0002-9724-4911" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                                 <span class="text-2xl mb-2">🆔</span>
+                                <p class="font-semibold group-hover:text-sky-400 transition-colors">ORCID</p>
+                            </a>
+                            <a href="https://bsky.app/profile/shinjiizuka.bsky.social" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                                <span class="text-2xl mb-2">🦋</span>
+                                <p class="font-semibold group-hover:text-sky-400 transition-colors">Bluesky</p>
+                            </a>
+                            <a href="http://ryumachi.umin.jp/" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                                 <span class="text-2xl mb-2">🏥</span>
+                                <p class="font-semibold group-hover:text-sky-400 transition-colors">Dept. Website (UoT)</p>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="lg:w-1/3 mt-12 lg:mt-0">
+                <div class="sticky top-24"> 
+                    <div id="twitter-card-container" class="animated-section">  <h3 class=""> Latest on X </h3>
+                        <div class="p-1"> 
+                            <a class="twitter-timeline"
+                               data-theme="dark"
+                               data-height="500"
+                               data-dnt="true"
+                               data-chrome="noheader nofooter noborders transparent"
+                               href="https://x.com/IzukaShinji?ref_src=twsrc%5Etfw">
+                                Tweets by Shinji Izuka
+                            </a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="text-center p-10 border-t border-slate-700"> 
+        <p>&copy; <span id="currentYear"></span> Shinji Izuka. All rights reserved.</p>
+        <p class="text-xs mt-3">Last updated: May 2024</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for navigation links and active link highlighting
+        const navLinks = document.querySelectorAll('header nav a.nav-link, #mobile-menu a.nav-link');
+        const sections = document.querySelectorAll('main section[id]');
+
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetID = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetID);
+
+                if (targetElement) {
+                    const headerOffset = document.querySelector('header').offsetHeight || 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                         top: offsetPosition,
+                         behavior: "smooth"
+                    });
+                }
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                navLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+                
+                const desktopLink = document.querySelector(`header nav a.nav-link[href="#${targetID}"]`);
+                const mobileLink = document.querySelector(`#mobile-menu a.nav-link[href="#${targetID}"]`);
+                if(desktopLink) desktopLink.classList.add('active');
+                if(mobileLink) mobileLink.classList.add('active');
+            });
+        });
+        
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            const headerHeight = document.querySelector('header').offsetHeight || 80; 
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 20; 
+                const sectionBottom = sectionTop + section.offsetHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            
+            if (!currentSectionId && sections.length > 0) {
+                 if (pageYOffset < sections[0].offsetTop - headerHeight - 20) { 
+                    currentSectionId = sections[0].getAttribute('id');
+                } else if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 40) { 
+                    currentSectionId = sections[sections.length -1].getAttribute('id');
+                }
+            }
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+        window.addEventListener('load', updateActiveNavLink); 
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const animatedElements = document.querySelectorAll('.animated-section, #twitter-card-container');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    if (entry.target.id === 'twitter-card-container') {
+                        if (typeof twttr !== 'undefined' && twttr.widgets && typeof twttr.widgets.load === 'function') {
+                            twttr.widgets.load(entry.target);
+                        }
+                    }
+                     observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
