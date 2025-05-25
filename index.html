@@ -25,10 +25,14 @@
         .section-dark p, .section-dark ul, .section-dark li { 
             color: #F7FAFC; 
         }
-        .section-dark .text-slate-400 { color: #CBD5E1; } /* UPDATED from #A0AEC0 for better contrast */
-        .section-dark .text-slate-500 { color: #718096; } /* Retained for potentially even more subtle text if used */
+        /* Removed .section-dark .text-slate-400 specific rule to let p inherit #F7FAFC */
+        /* .section-dark .text-slate-400 { color: #CBD5E1; } */ /* This line is now commented out/removed */
+
+        .section-dark .text-slate-500 { color: #718096; } 
         .section-dark .text-slate-100 { color: #F7FAFC; } 
-        .section-dark .profile-link { color: #60a5fa; } 
+        .section-dark .profile-link { 
+            color: #F7FAFC; /* UPDATED from #60a5fa to be white-like */
+        } 
         .section-dark .border-slate-700 { border-color: #4A5568; } 
         
         .section-dark .item-card {
@@ -37,7 +41,7 @@
         }
         .section-dark .item-card:hover { border-color: #38bdf8; }
         .section-dark .item-card h3 { color: #F7FAFC; } 
-        .section-dark .item-card .text-slate-400 { color: #CBD5E1; } /* UPDATED from #A0AEC0 if used within item-card in dark section */
+        /* .section-dark .item-card .text-slate-400 would now inherit general .section-dark p or li color if not for specific Tailwind class on element */
         .section-dark .item-card .text-sky-400 { color: #63b3ed; } 
         
         .section-dark .connect-link-card {
@@ -74,7 +78,8 @@
             font-weight: 700;
         }
         .nav-link {
-            @apply px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors duration-150 ease-in-out relative;
+            /* UPDATED default text color to white, hover to a very light gray (slate-200) */
+            @apply px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-slate-700 hover:text-slate-200 transition-colors duration-150 ease-in-out relative;
         }
         .nav-link:hover::after, .nav-link.active::after {
             content: '';
@@ -119,7 +124,7 @@
         @media (min-width: 640px) { #hero h1.text-white { font-size: 3.5rem; } }
         @media (min-width: 1024px) { #hero h1.text-white { font-size: 4rem; } }
 
-        #hero p.text-slate-400 { /* This will now use .section-dark .text-slate-400 -> #CBD5E1 */
+        #hero p.text-slate-400 { /* Paragraphs with .text-slate-400 in hero (a .section-dark) will inherit .section-dark p color: #F7FAFC due to removal of specific .section-dark .text-slate-400 rule */
             font-size: 1.25rem;
         }
         @media (min-width: 640px) { #hero p.text-slate-400 { font-size: 1.5rem; } }
@@ -144,9 +149,10 @@
 
 
         /* General Link Styling */
-        .profile-link { 
+        .profile-link { /* Used in publication links etc. on light backgrounds */
             @apply text-sky-500 hover:text-sky-400 hover:underline transition-colors duration-150;
         }
+        /* Color for .profile-link in dark sections is now #F7FAFC */
 
 
         /* Research Interest Tags Styling */
@@ -170,7 +176,7 @@
             color: #1a202c; 
         }
         
-        .item-card .text-slate-400 { color: #718096; } /* For light background cards */
+        .item-card .text-slate-400 { color: #718096; } 
         .item-card .text-sky-400 { color: #3182ce; } 
         .item-card .text-slate-500 { color: #4A5568; } 
 
@@ -217,7 +223,7 @@
         /* Footer */
         footer {
             background-color: #1A202C; 
-            color: #CBD5E1; /* UPDATED from #A0AEC0 for better contrast */
+            color: #CBD5E1; 
         }
         footer .border-slate-700 { border-color: #4A5568; }
 
@@ -281,8 +287,7 @@
                      class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover shadow-2xl mx-auto mb-8 border-4 ring-4 ring-sky-500/30"
                      onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/94a3b8?text=S.I.';">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3">Shinji Izuka, M.D., Ph.D.</h1>
-                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p>
-                <div class="space-x-4">
+                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p> <div class="space-x-4">
                     <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="inline-block font-semibold py-3 px-6 shadow-lg">
                         researchmap
                     </a>
@@ -382,7 +387,7 @@
                         <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Awards & Grants</h2>
                         <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
                             <div>
-                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Awards and Honors</h3>
+                                <h3 class="text-2xl font-semibold mb-6">Awards and Honors</h3>
                                 <ul class="space-y-4">
                                     <li class="item-card">JCR 2025 Excellent Abstract Award, Japan College of Rheumatology (Apr 2025)</li>
                                     <li class="item-card">Tadamitsu Kishimoto International Travel Award (Nov 2024)</li>
@@ -399,7 +404,7 @@
                                 <p class="mt-5 text-sm text-slate-400">For a full list, please see <a href="https://researchmap.jp/shinji04/awards" target="_blank" rel="noopener noreferrer" class="profile-link">researchmap</a>.</p> 
                             </div>
                             <div>
-                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Grants and Funding</h3>
+                                <h3 class="text-2xl font-semibold mb-6">Grants and Funding</h3>
                                 <ul class="space-y-4">
                                     <li class="item-card">
                                         <p class="font-medium">Stratification of rheumatic diseases and search for prognostic factors using large-scale multi-omics data.</p>
