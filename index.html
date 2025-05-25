@@ -8,39 +8,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         body {
-            /* UPDATED: Font, background, and text color */
             font-family: 'Poppins', sans-serif;
-            background-color: #FFFFFF; /* Light background for the page */
-            color: #333333; /* Darker text for readability */
+            background-color: #FFFFFF; 
+            color: #333333; 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         /* --- THEME CLASSES FOR SECTIONS --- */
         .section-dark {
-            background-color: #1A202C; /* Dark Gray/Blue */
-            color: #F7FAFC; /* Lighter text - UPDATED from #E2E8F0 for better contrast */
+            background-color: #1A202C; 
+            color: #F7FAFC; 
         }
         .section-dark .section-title,
         .section-dark h1, .section-dark h2, .section-dark h3,
-        .section-dark p, .section-dark ul, .section-dark li { /* Ensure all text in dark section is light */
-            color: #F7FAFC; /* Lighter text - UPDATED from #E2E8F0 */
+        .section-dark p, .section-dark ul, .section-dark li { 
+            color: #F7FAFC; 
         }
-        .section-dark .text-slate-400 { color: #A0AEC0; } /* Lighter version of slate-400 */
-        .section-dark .text-slate-500 { color: #718096; }
-        .section-dark .text-slate-100 { color: #F7FAFC; } /* This now matches the base .section-dark color */
-        .section-dark .profile-link { color: #60a5fa; } /* Lighter sky blue for links */
-        .section-dark .border-slate-700 { border-color: #4A5568; } /* Darker border */
+        .section-dark .text-slate-400 { color: #CBD5E1; } /* UPDATED from #A0AEC0 for better contrast */
+        .section-dark .text-slate-500 { color: #718096; } /* Retained for potentially even more subtle text if used */
+        .section-dark .text-slate-100 { color: #F7FAFC; } 
+        .section-dark .profile-link { color: #60a5fa; } 
+        .section-dark .border-slate-700 { border-color: #4A5568; } 
         
         .section-dark .item-card {
-            background-color: #2D3748; /* Slightly lighter than section bg */
+            background-color: #2D3748; 
             border-color: #4A5568;
-            /* Text color for item-card contents will be inherited from .section-dark li or .section-dark p, now #F7FAFC */
         }
         .section-dark .item-card:hover { border-color: #38bdf8; }
-        .section-dark .item-card h3 { color: #F7FAFC; } /* Already very light, consistent with new base */
-        .section-dark .item-card .text-slate-400 { color: #A0AEC0; } /* Specific slate color for less emphasis */
-        .section-dark .item-card .text-sky-400 { color: #63b3ed; } /* Specific sky color */
+        .section-dark .item-card h3 { color: #F7FAFC; } 
+        .section-dark .item-card .text-slate-400 { color: #CBD5E1; } /* UPDATED from #A0AEC0 if used within item-card in dark section */
+        .section-dark .item-card .text-sky-400 { color: #63b3ed; } 
         
         .section-dark .connect-link-card {
             background-color: #2D3748;
@@ -51,58 +49,55 @@
             background-color: #4A5568;
         }
         .section-dark .connect-link-card p {
-            color: #F7FAFC !important; /* UPDATED from #E2E8F0 for brighter text */
+            color: #F7FAFC !important; 
         }
          .section-dark .connect-link-card .group-hover\:text-sky-400:hover { color: #38bdf8 !important; }
 
 
         .section-light-gray {
-            background-color: #f7fafc; /* Very light gray */
+            background-color: #f7fafc; 
             color: #333333;
         }
         /* --- END THEME CLASSES --- */
 
         /* Header Styling */
         header {
-            background-color: #1A202C; /* Dark Gray/Blue, similar to Konig's black header */
+            background-color: #1A202C; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 50;
-            /* backdrop-filter: blur(xl); /* Can be removed if solid bg is preferred */
         }
-        header .hero-title { /* Your name in header */
+        header .hero-title { 
             color: #FFFFFF;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
         }
         .nav-link {
             @apply px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors duration-150 ease-in-out relative;
-            /* text-slate-200 is #E2E8F0, which is quite light. hover:text-white is pure white. This is good. */
         }
         .nav-link:hover::after, .nav-link.active::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -4px; /* Adjusted to ensure visibility if needed */
+            bottom: -4px; 
             width: 0;
             height: 2px;
-            background-color: #38bdf8; /* Sky blue accent */
+            background-color: #38bdf8; 
             transition: width 0.2s ease-out;
         }
         .nav-link:hover::after { width: 100%; }
         .nav-link.active::after { width: 100%; }
         #mobile-menu-button svg { stroke: #FFFFFF; }
-        #mobile-menu { background-color: #2D3748; /* Slightly lighter dark for mobile menu dropdown */ }
+        #mobile-menu { background-color: #2D3748; }
 
 
-        /* Section Title Styling (Removed Gradient) */
-        .section-title { /* Replaces .section-title-gradient */
-            color: #2d3748; /* Dark gray for titles on light bg */
+        /* Section Title Styling */
+        .section-title { 
+            color: #2d3748; 
             font-family: 'Poppins', sans-serif;
-            font-weight: 700; /* Bold */
+            font-weight: 700; 
         }
-        /* color for titles in dark sections is handled by .section-dark .section-title (now #F7FAFC) */
 
 
         /* Hero Section Styling */
@@ -124,9 +119,8 @@
         @media (min-width: 640px) { #hero h1.text-white { font-size: 3.5rem; } }
         @media (min-width: 1024px) { #hero h1.text-white { font-size: 4rem; } }
 
-        #hero p.text-slate-400 { 
+        #hero p.text-slate-400 { /* This will now use .section-dark .text-slate-400 -> #CBD5E1 */
             font-size: 1.25rem;
-            /* This text-slate-400 in hero (which is .section-dark) will use .section-dark .text-slate-400 { color: #A0AEC0; } */
         }
         @media (min-width: 640px) { #hero p.text-slate-400 { font-size: 1.5rem; } }
 
@@ -153,14 +147,13 @@
         .profile-link { 
             @apply text-sky-500 hover:text-sky-400 hover:underline transition-colors duration-150;
         }
-        /* color for .profile-link in dark sections is handled by .section-dark .profile-link { color: #60a5fa; } */
 
 
-        /* Research Interest Tags Styling (simplified) */
+        /* Research Interest Tags Styling */
         .tag {
             @apply inline-flex items-center justify-center bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm shadow-sm;
         }
-        .section-dark .tag { /* This applies if tags are used in a .section-dark directly */
+        .section-dark .tag {
              @apply bg-sky-700 text-sky-100;
         }
 
@@ -168,33 +161,28 @@
         /* Item Card (Publications, Awards, Books) Styling */
         .item-card {
             @apply p-4 mb-4; 
-            border-bottom: 1px solid #e2e8f0; /* Light separator line for light theme cards */
+            border-bottom: 1px solid #e2e8f0; 
         }
         .item-card:last-child { border-bottom: none; }
         
-        /* .section-dark .item-card handled by theme styles (background, border, and text color inherited or specified) */
-        /* Example: text within .section-dark .item-card will now default to #F7FAFC unless more specific rules apply */
-
-        .item-card h3 { /* For item cards in light themes */
+        .item-card h3 { 
             @apply font-semibold text-lg;
             color: #1a202c; 
         }
-        /* .section-dark .item-card h3 is specifically #F7FAFC */
         
-        .item-card .text-slate-400 { color: #718096; } 
+        .item-card .text-slate-400 { color: #718096; } /* For light background cards */
         .item-card .text-sky-400 { color: #3182ce; } 
         .item-card .text-slate-500 { color: #4A5568; } 
 
 
         /* Connect & Explore Link Cards */
-        .connect-link-card { /* For light themes */
+        .connect-link-card { 
             @apply bg-slate-100 rounded-lg border border-slate-300 hover:border-sky-500 transition-all duration-200 hover:shadow-lg flex flex-col items-center justify-center p-6 text-center hover:bg-slate-200;
             min-height: 140px;
             width: 100%;
         }
-        .connect-link-card p { color: #1A202C !important; } /* For light themes */
-        .connect-link-card .group-hover\:text-sky-400:hover { color: #38bdf8 !important; } /* For light themes */
-        /* .section-dark .connect-link-card handled by theme styles (background, border, and text color by its p rule) */
+        .connect-link-card p { color: #1A202C !important; } 
+        .connect-link-card .group-hover\:text-sky-400:hover { color: #38bdf8 !important; } 
 
 
         /* Sidebar Twitter Card Container */
@@ -209,18 +197,18 @@
             border-bottom: 1px solid #e2e8f0; 
             @apply p-6 font-semibold text-xl; 
         }
-        .section-dark #twitter-card-container { /* If sidebar is within a dark section explicitly */
+        .section-dark #twitter-card-container { 
             background-color: #2D3748;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
-        .section-dark #twitter-card-container h3 { /* Title of Twitter card in dark section */
-            color: #FFFFFF; /* Ensuring this title is white if in dark section */
+        .section-dark #twitter-card-container h3 { 
+            color: #FFFFFF; 
             border-bottom-color: #4A5568;
         }
         .twitter-timeline { width: 100% !important; }
 
 
-        /* Custom scrollbar for a more integrated look */
+        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #e2e8f0; } 
         ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; } 
@@ -228,13 +216,13 @@
 
         /* Footer */
         footer {
-            background-color: #1A202C; /* Dark footer */
-            color: #A0AEC0; /* Light slate text - this is a specific shade, not affected by general .section-dark update */
+            background-color: #1A202C; 
+            color: #CBD5E1; /* UPDATED from #A0AEC0 for better contrast */
         }
         footer .border-slate-700 { border-color: #4A5568; }
 
 
-        /* Card animation - target sections or specific animated elements */
+        /* Card animation */
         .animated-section { 
             opacity: 0;
             transform: translateY(20px);
@@ -293,7 +281,8 @@
                      class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover shadow-2xl mx-auto mb-8 border-4 ring-4 ring-sky-500/30"
                      onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/94a3b8?text=S.I.';">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3">Shinji Izuka, M.D., Ph.D.</h1>
-                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p> <div class="space-x-4">
+                <p class="text-xl sm:text-2xl text-slate-400 mb-8">Rheumatologist | Translational Researcher</p>
+                <div class="space-x-4">
                     <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="inline-block font-semibold py-3 px-6 shadow-lg">
                         researchmap
                     </a>
@@ -390,9 +379,11 @@
 
                 <section id="awards-grants" class="py-10 md:py-16 section-dark animated-section"> 
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Awards & Grants</h2> <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Awards & Grants</h2>
+                        <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
                             <div>
-                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Awards and Honors</h3> <ul class="space-y-4">
+                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Awards and Honors</h3>
+                                <ul class="space-y-4">
                                     <li class="item-card">JCR 2025 Excellent Abstract Award, Japan College of Rheumatology (Apr 2025)</li>
                                     <li class="item-card">Tadamitsu Kishimoto International Travel Award (Nov 2024)</li>
                                     <li class="item-card">EMEUNET Top 10 Abstracts at ACR 2024 (Nov 2024)</li>
@@ -405,9 +396,11 @@
                                     <li class="item-card">EMEUNET Top 10 Abstracts at EULAR 2023 (Jun 2023)</li>
                                     <li class="item-card">JCR 2023 Excellent Abstract Award, Japan College of Rheumatology (Apr 2023)</li>
                                 </ul>
-                                <p class="mt-5 text-sm text-slate-400">For a full list, please see <a href="https://researchmap.jp/shinji04/awards" target="_blank" rel="noopener noreferrer" class="profile-link">researchmap</a>.</p> </div>
+                                <p class="mt-5 text-sm text-slate-400">For a full list, please see <a href="https://researchmap.jp/shinji04/awards" target="_blank" rel="noopener noreferrer" class="profile-link">researchmap</a>.</p> 
+                            </div>
                             <div>
-                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Grants and Funding</h3> <ul class="space-y-4">
+                                <h3 class="text-2xl font-semibold text-sky-400 mb-6">Grants and Funding</h3>
+                                <ul class="space-y-4">
                                     <li class="item-card">
                                         <p class="font-medium">Stratification of rheumatic diseases and search for prognostic factors using large-scale multi-omics data.</p>
                                         <p class="text-sm mt-1">Japan Society for the Promotion of Science (JSPS) - Grant-in-Aid for JSPS Fellows (DC1)</p>
@@ -493,8 +486,9 @@
 
                 <section id="links" class="py-10 md:py-16 section-dark animated-section">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Connect & Explore</h2> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                             <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
+                        <h2 class="section-title text-3xl sm:text-4xl mb-8 border-b-2 pb-4">Connect & Explore</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <a href="https://researchmap.jp/shinji04?lang=en" target="_blank" rel="noopener noreferrer" class="connect-link-card group">
                                 <span class="text-2xl mb-2">🔬</span>
                                 <p class="font-semibold group-hover:text-sky-400 transition-colors">researchmap (EN)</p>
                             </a>
@@ -525,7 +519,8 @@
 
             <aside class="lg:w-1/3 mt-12 lg:mt-0">
                 <div class="sticky top-24"> 
-                    <div id="twitter-card-container" class="animated-section">  <h3 class=""> Latest on X </h3>
+                    <div id="twitter-card-container" class="animated-section"> 
+                        <h3 class=""> Latest on X </h3>
                         <div class="p-1"> 
                             <a class="twitter-timeline"
                                data-theme="dark"
