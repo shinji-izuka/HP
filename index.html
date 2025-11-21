@@ -3,243 +3,459 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shinji Izuka | Rheumatologist & Researcher</title>
+  <title>Shinji Izuka | Rheumatologist & Translational Scientist</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    body {font-family: "Poppins", sans-serif}
-    /* underline that animates on hover & when link is current */
-    .nav-item {position: relative}
-    .nav-item span {position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #38bdf8; transition: width .2s ease-out}
-    .nav-item:hover span, [aria-current="page"].nav-item span {width: 100%}
-    /* section fade‑in */
-    .fade {opacity: 0; transform: translateY(20px); transition: all .6s ease-out}
-    .show {opacity: 1; transform: none}
-
-    /* Ensure section titles are not italic */
-    main section h2.text-3xl {
-        font-style: normal !important; /* Force normal font style */
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            science: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9', // Sky blue for links
+              800: '#075985',
+              900: '#0c4a6e', // Deep navy for authority
+            }
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
     }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Subtle background pattern for data/tech feel */
+    .bg-grid-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    
+    /* Fade In Classes */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    
+    /* Link Hover Effect */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0;
+      background-color: #0ea5e9; transition: width 0.3s;
+    }
+    .nav-link:hover::after, .nav-link[aria-current="page"]::after { width: 100%; }
   </style>
 </head>
-<body class="antialiased text-slate-800 bg-white">
-  <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md shadow-sm">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
-      <h1 class="text-lg md:text-xl font-bold text-white">Shinji Izuka</h1>
-      <nav class="hidden md:flex space-x-4 text-sm font-medium">
-        <a href="#about"      class="nav-item text-white/90 hover:text-white"><span></span>About</a>
-        <a href="#research"   class="nav-item text-white/90 hover:text-white"><span></span>Research</a>
-        <a href="#publications" class="nav-item text-white/90 hover:text-white"><span></span>Publications</a>
-        <a href="#awards"     class="nav-item text-white/90 hover:text-white"><span></span>Awards & Grants</a>
-        <a href="#books"      class="nav-item text-white/90 hover:text-white"><span></span>Books</a>
-        <a href="#activities" class="nav-item text-white/90 hover:text-white"><span></span>Activities</a>
-        <a href="#links"      class="nav-item text-white/90 hover:text-white"><span></span>Links</a>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-science-500 selection:text-white">
+
+  <header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="text-2xl font-serif font-bold text-slate-900 tracking-tight">
+        S. Izuka<span class="text-science-500">.</span>
+      </a>
+      
+      <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+        <a href="#about" class="nav-link hover:text-science-900 transition-colors">About</a>
+        <a href="#research" class="nav-link hover:text-science-900 transition-colors">Research</a>
+        <a href="#publications" class="nav-link hover:text-science-900 transition-colors">Publications</a>
+        <a href="#awards" class="nav-link hover:text-science-900 transition-colors">Awards</a>
+        <a href="#activities" class="nav-link hover:text-science-900 transition-colors">Activities</a>
       </nav>
-      <button id="menuBtn" class="md:hidden text-white" aria-label="Open menu">
-        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+
+      <button id="menuBtn" class="md:hidden p-2 text-slate-600 hover:text-science-900 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
       </button>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-700 bg-slate-800">
-      <nav class="flex flex-col py-4 space-y-1 text-sm font-medium px-4">
-        <a href="#about"      class="nav-item text-slate-100 py-2"><span></span>About</a>
-        <a href="#research"   class="nav-item text-slate-100 py-2"><span></span>Research</a>
-        <a href="#publications" class="nav-item text-slate-100 py-2"><span></span>Publications</a>
-        <a href="#awards"     class="nav-item text-slate-100 py-2"><span></span>Awards & Grants</a>
-        <a href="#books"      class="nav-item text-slate-100 py-2"><span></span>Books</a>
-        <a href="#activities" class="nav-item text-slate-100 py-2"><span></span>Activities</a>
-        <a href="#links"      class="nav-item text-slate-100 py-2"><span></span>Links</a>
+
+    <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white border-b border-slate-200 shadow-lg">
+      <nav class="flex flex-col px-6 py-4 space-y-4 text-base font-medium text-slate-600">
+        <a href="#about" class="block hover:text-science-500">About</a>
+        <a href="#research" class="block hover:text-science-500">Research</a>
+        <a href="#publications" class="block hover:text-science-500">Publications</a>
+        <a href="#awards" class="block hover:text-science-500">Awards</a>
+        <a href="#activities" class="block hover:text-science-500">Activities</a>
       </nav>
     </div>
   </header>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<section id="hero" class="pt-12 pb-20 text-center bg-slate-800 text-white rounded-b-lg">
-<img src="image_c07b11.jpeg" alt="Shinji Izuka" class="mx-auto mb-6 h-40 w-40 sm:h-48 sm:w-48 rounded-full ring-4 ring-sky-400/40 object-cover shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/192x192/1e293b/94a3b8?text=S.I.'" />
-<h2 class="text-3xl sm:text-4xl font-extrabold">Shinji Izuka, M.D., Ph.D.</h2>
-<p class="mt-2 text-lg sm:text-xl text-sky-200">Rheumatologist / Translational Researcher</p>
-<div class="mt-6 flex flex-wrap justify-center gap-4">
-<a href="https://orcid.org/0000-0002-9724-4911" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 rounded-md border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white transition">ORCID</a>
-<a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 rounded-md border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white transition">Google Scholar</a>
-<a href="https://www.linkedin.com/in/shinji-izuka-a2b80b192/" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 rounded-md border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white transition">LinkedIn</a>
-<a href="https://x.com/IzukaShinji" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-2.5 rounded-md border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white transition">X (Twitter)</a>
-</div>
-</section>
-
-    <section id="about" class="fade py-16">
-      <h2 class="text-3xl font-bold mb-6 text-slate-900">About Me</h2>
-      <ul class="space-y-2 text-lg text-slate-700">
-        <li><strong class="text-slate-900">Affiliation:</strong> Dept. of Allergy & Rheumatology, The University of Tokyo Hospital</li>
-        <li><strong class="text-slate-900">Specialty:</strong> Rheumatology</li>
-        <li><strong class="text-slate-900">Degree:</strong> M.D., Ph.D. in Medicine</li>
-      </ul>
-      <p class="mt-6 leading-relaxed text-slate-600">I investigate the pathogenesis of rheumatic diseases such as myositis and systemic lupus erythematosus, integrating clinical insights with multi‑omics bioinformatics to enable precision medicine.</p>
-    </section>
-
-    <section id="research" class="fade py-16 bg-slate-50 rounded-lg">
-      <h2 class="text-3xl font-bold mb-6 text-slate-900">Research Interests</h2>
-      <div class="grid sm:grid-cols-2 gap-4 text-lg text-slate-700">
-        <div class="flex gap-3 items-start"><span>🧬</span><p>Bioinformatics & machine‑learning for rheumatic diseases</p></div>
-        <div class="flex gap-3 items-start"><span>📊</span><p>Patient stratification using large‑scale multi‑omics data</p></div>
-        <div class="flex gap-3 items-start"><span>💪</span><p>Idiopathic inflammatory myopathies</p></div>
-        <div class="flex gap-3 items-start"><span>🦋</span><p>Systemic lupus erythematosus</p></div>
+  <main>
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/2 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.3]"></div>
       </div>
-    </section>
 
-    <section id="publications" class="fade py-16">
-      <h2 class="text-3xl font-bold mb-6 text-slate-900">Selected Publications</h2>
-      <p class="mb-8 text-slate-500">Full list on <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" rel="noopener noreferrer" class="text-sky-600 underline hover:text-sky-700">Google Scholar</a>.</p>
-      <div class="space-y-6">
-        <article class="border-l-4 border-sky-500 pl-4 py-1">
-          <h3 class="font-semibold text-slate-800">Muscle tissue transcriptome of idiopathic inflammatory myopathy reflects the muscle damage process by monocytes and presence of skin lesions.</h3>
-          <p class="text-sm text-slate-600">Izuka S <em>et al.</em> <span class="text-sky-700 font-medium">Arthritis & Rheumatology (2024)</span></p>
-        </article>
-        <article class="border-l-4 border-sky-500 pl-4 py-1">
-          <h3 class="font-semibold text-slate-800">Machine‑learning‑driven immunophenotypic stratification of mixed connective tissue disease.</h3>
-          <p class="text-sm text-slate-600">Izuka S <em>et al.</em> <span class="text-sky-700 font-medium">Rheumatology (Oxford)(2024)</span></p>
-        </article>
-        <article class="border-l-4 border-sky-500 pl-4 py-1">
-          <h3 class="font-semibold text-slate-800">The role of monocytes & macrophages in idiopathic inflammatory myopathies.</h3>
-          <p class="text-sm text-slate-600">Izuka S <em>et al.</em> <span class="text-sky-700 font-medium">Frontiers in Immunology (2025)</span></p>
-        </article>
-        <article class="border-l-4 border-sky-500 pl-4 py-1">
-            <h3 class="font-semibold text-slate-800">Acute exacerbation of rheumatoid arthritis–associated interstitial lung disease: clinical features and prognosis.</h3>
-            <p class="text-sm text-slate-600">Izuka S <em>et al.</em> <span class="text-sky-700 font-medium">Rheumatology (Oxford) (2021)</span></p>
-        </article>
-      </div>
-    </section>
-
-    <section id="awards" class="fade py-16">
-      <h2 class="text-3xl font-bold mb-8 text-slate-900">Awards & Grants</h2> 
-      <div class="grid md:grid-cols-2 gap-8"> 
-        <div>
-          <h3 class="text-xl font-semibold mb-4 text-slate-800">Selected Awards</h3> 
-          <ul class="space-y-2 list-disc list-inside text-base text-slate-700"> 
-            <li>EULAR Abstract Award (2023)</li>
-            <li>Lindau Nobel Laureate Meeting – Young Scientist (2023)</li>
-            <li>ACR-EULAR-APLAR Research Exchange Program (2023)</li>
-            <li>EMEUNET Top 10 Abstracts at ACR (2024)</li>
-            <li>EMEUNET Top 10 Abstracts at EULAR (2024)</li>
-            <li>Ursula and Fritz Melchers Travel Award (2024)</li>
-
-          </ul>
-           <p class="mt-4 text-sm text-slate-600">For a full list, see <a href="https://researchmap.jp/shinji04/awards" target="_blank" rel="noopener noreferrer" class="text-sky-600 underline hover:text-sky-800">researchmap</a>.</p> 
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 text-center md:text-left z-10 fade-up">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-science-50 border border-science-100 text-science-800 text-xs font-semibold mb-6 tracking-wide uppercase">
+            M.D., Ph.D. • The University of Tokyo
+          </div>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-tight mb-6">
+            Shinji Izuka
+          </h1>
+          <p class="text-xl md:text-2xl text-slate-600 mb-8 font-light leading-relaxed">
+            Deciphering <span class="text-slate-900 font-normal">Rheumatic Diseases</span> through the lens of <span class="text-slate-900 font-normal">Multi-Omics</span> & <span class="text-slate-900 font-normal">Data Science</span>.
+          </p>
+          
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="#publications" class="px-8 py-3 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition shadow-lg shadow-slate-900/20">
+              View Publications
+            </a>
+            <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" class="px-8 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium hover:border-science-500 hover:text-science-600 transition shadow-sm flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+              Google Scholar
+            </a>
+          </div>
+          
+          <div class="mt-10 flex justify-center md:justify-start gap-6 text-slate-400">
+            <a href="https://x.com/IzukaShinji" target="_blank" class="hover:text-slate-900 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.linkedin.com/in/shinji-izuka-a2b80b192/" target="_blank" class="hover:text-slate-900 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+            <a href="https://orcid.org/0000-0002-9724-4911" target="_blank" class="hover:text-slate-900 transition font-serif font-bold">iD</a>
+          </div>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4 text-slate-800">Current Grant</h3> 
-          <p class="font-medium text-slate-800">Stratification of rheumatic diseases with multi‑omics data</p>
-          <p class="text-sm text-slate-600">JSPS Grant‑in‑Aid for JSPS Fellows (PI, 2022‑2025)</p> 
+
+        <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex-shrink-0 animate-float z-10 fade-up" style="transition-delay: 100ms">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-science-500 to-purple-600 blur-2xl opacity-20"></div>
+          <img 
+            src="image_c07b11.jpeg" 
+            alt="Shinji Izuka" 
+            class="relative w-full h-full rounded-2xl object-cover shadow-2xl rotate-3 border-4 border-white"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x400/f1f5f9/0f172a?text=SI'"
+          />
         </div>
       </div>
     </section>
-    
-    <section id="books" class="fade py-16">
-      <h2 class="text-3xl font-bold mb-6 text-slate-900">Book Contributions</h2>
-      <ul class="space-y-4 text-base"> 
-        <li class="border-l-4 border-sky-500 pl-4 py-1">
-            <strong class="text-slate-800"> 「この患者さんリウマチ・膠原病かも？」と迷ったときの診断のカンどころ</strong> – Differential diagnosis chapter <span class="text-slate-500">(Yodosha, 2025)</span>
-        </li>
-        <li class="border-l-4 border-sky-500 pl-4 py-1">
-            <strong class="text-slate-800">THE内科専門医問題集</strong> – Question author <span class="text-slate-500">(Igaku‑Shoin, 2024)</span>
-        </li>
-        <li class="border-l-4 border-sky-500 pl-4 py-1">
-            <strong class="text-slate-800">患者さんからよく尋ねられる内科診療のQuestion</strong> – Contributor <span class="text-slate-500">(Nankodo, 2024)</span>
-        </li>
-         <li class="border-l-4 border-sky-500 pl-4 py-1">
-            <strong class="text-slate-800">リウマチ科 Vol.67 No.6</strong> – Contributor <span class="text-slate-500">(Kagaku Hyoron Sha, 2022)</span>
-        </li>
-      </ul>
-    </section>
 
-    <section id="activities" class="fade py-16 bg-slate-50 rounded-lg">
-      <h2 class="text-3xl font-bold mb-6 text-slate-900">Professional Activities</h2>
-      <ul class="space-y-3 text-base text-slate-700 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>ACR International Adviser (2024‑)</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>RMD Open Social Media Editor (2024‑)</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>ACR Social Media Ambassador (2023‑)</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>Annals of Rheumatic Diseases Guest Editor (2024)</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>Member, Japan College of Rheumatology</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>Member, The Japanese Society of Internal Medicine</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>Member, Japanese Society for Immunology</li>
-        <li class="flex items-start"><span class="text-sky-600 mr-2 mt-1 font-bold text-xl leading-none">•</span>Member, IMACS</li>
-      </ul>
-    </section>
+    <section id="about" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="md:col-span-2 p-8 rounded-2xl bg-slate-50 border border-slate-100 fade-up">
+            <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">About Me</h2>
+            <p class="text-lg text-slate-600 leading-relaxed mb-4">
+                I am a Rheumatologist and Translational Researcher at the <strong class="text-slate-900">University of Tokyo Hospital</strong>. My work bridges the gap between clinical rheumatology and computational biology.
+            </p>
+            <p class="text-lg text-slate-600 leading-relaxed">
+                By integrating large-scale multi-omics data with machine learning, I aim to unravel the heterogeneity of complex autoimmune conditions—specifically <span class="text-science-800 font-medium">Idiopathic Inflammatory Myopathies (IIM)</span> and <span class="text-science-800 font-medium">SLE</span>—to realize the goal of precision medicine.
+            </p>
+          </div>
 
-    <section id="links" class="fade py-16 text-center"> 
-      <h2 class="text-3xl font-bold mb-10 text-slate-900">Connect</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 text-sm">
-        <a href="https://www.researchgate.net/profile/Shinji-Izuka" target="_blank" rel="noopener noreferrer" class="block p-4 rounded-lg border border-slate-200 hover:bg-sky-50 hover:border-sky-400 transition-colors text-slate-700 hover:text-sky-700">🔗 ResearchGate</a>
-        <a href="https://bsky.app/profile/shinjiizuka.bsky.social" target="_blank" rel="noopener noreferrer" class="block p-4 rounded-lg border border-slate-200 hover:bg-sky-50 hover:border-sky-400 transition-colors text-slate-700 hover:text-sky-700">🦋 Bluesky</a>
-        <a href="http://ryumachi.umin.jp/" target="_blank" rel="noopener noreferrer" class="block p-4 rounded-lg border border-slate-200 hover:bg-sky-50 hover:border-sky-400 transition-colors text-slate-700 hover:text-sky-700">🏥 Dept. Website</a>
+          <div class="md:col-span-1 space-y-4">
+            <div class="p-6 rounded-2xl bg-science-900 text-white shadow-lg fade-up" style="transition-delay: 100ms">
+              <h3 class="text-sm uppercase tracking-wider text-science-200 mb-1">Specialty</h3>
+              <p class="text-xl font-semibold">Rheumatology</p>
+              <p class="text-science-200 text-sm mt-1">Dept. of Allergy & Rheumatology</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm fade-up" style="transition-delay: 200ms">
+              <h3 class="text-sm uppercase tracking-wider text-slate-500 mb-1">Focus</h3>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Single-cell RNA-seq</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Bioinformatics</span>
+                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Precision Med</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <section id="research" class="py-20 bg-slate-50 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center fade-up">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900">Research Interests</h2>
+          <p class="mt-4 text-slate-600">Combining wet-lab insights with dry-lab analytics.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="group p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up">
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-blue-100 transition">🧬</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Genomics & ML</h3>
+            <p class="text-sm text-slate-500">Applying machine learning to transcriptomic data for disease subtyping.</p>
+          </div>
+          <div class="group p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up" style="transition-delay: 100ms">
+            <div class="w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-indigo-100 transition">📊</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Stratification</h3>
+            <p class="text-sm text-slate-500">Patient clustering using large-scale clinical and multi-omics datasets.</p>
+          </div>
+          <div class="group p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up" style="transition-delay: 200ms">
+            <div class="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-teal-100 transition">💪</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Myositis (IIM)</h3>
+            <p class="text-sm text-slate-500">Pathogenesis investigation of idiopathic inflammatory myopathies.</p>
+          </div>
+          <div class="group p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-up" style="transition-delay: 300ms">
+            <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-purple-100 transition">🦋</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">SLE</h3>
+            <p class="text-sm text-slate-500">Immunological profiling of Systemic Lupus Erythematosus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-end mb-12 fade-up">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900">Selected Publications</h2>
+          <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" target="_blank" class="hidden sm:inline-flex text-science-600 font-medium hover:text-science-800 items-center gap-1 transition">View Google Scholar <span>→</span></a>
+        </div>
+
+        <div class="space-y-6">
+          <article class="group relative pl-8 border-l-2 border-slate-200 hover:border-science-500 transition-colors fade-up">
+            <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-science-500 transition-colors"></span>
+            <h3 class="text-xl font-semibold text-slate-900 leading-snug group-hover:text-science-700 transition-colors">
+              Muscle tissue transcriptome of idiopathic inflammatory myopathy reflects the muscle damage process by monocytes and presence of skin lesions.
+            </h3>
+            <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-600">
+              <span class="font-bold text-slate-800">Izuka S</span>, et al.
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">Arthritis & Rheumatology (2024)</span>
+            </div>
+          </article>
+
+          <article class="group relative pl-8 border-l-2 border-slate-200 hover:border-science-500 transition-colors fade-up">
+            <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-science-500 transition-colors"></span>
+            <h3 class="text-xl font-semibold text-slate-900 leading-snug group-hover:text-science-700 transition-colors">
+              Machine-learning-driven immunophenotypic stratification of mixed connective tissue disease.
+            </h3>
+            <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-600">
+              <span class="font-bold text-slate-800">Izuka S</span>, et al.
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">Rheumatology (Oxford) (2024)</span>
+            </div>
+          </article>
+
+          <article class="group relative pl-8 border-l-2 border-slate-200 hover:border-science-500 transition-colors fade-up">
+            <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-science-500 transition-colors"></span>
+            <h3 class="text-xl font-semibold text-slate-900 leading-snug group-hover:text-science-700 transition-colors">
+              The role of monocytes & macrophages in idiopathic inflammatory myopathies.
+            </h3>
+            <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-600">
+              <span class="font-bold text-slate-800">Izuka S</span>, et al.
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">Frontiers in Immunology (2025)</span>
+            </div>
+          </article>
+          
+          <article class="group relative pl-8 border-l-2 border-slate-200 hover:border-science-500 transition-colors fade-up">
+              <span class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-science-500 transition-colors"></span>
+              <h3 class="text-xl font-semibold text-slate-900 leading-snug group-hover:text-science-700 transition-colors">
+                Acute exacerbation of rheumatoid arthritis–associated interstitial lung disease: clinical features and prognosis.
+              </h3>
+              <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-600">
+                <span class="font-bold text-slate-800">Izuka S</span>, et al.
+                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">Rheumatology (Oxford) (2021)</span>
+              </div>
+            </article>
+        </div>
+        <div class="mt-8 text-center sm:hidden">
+            <a href="https://scholar.google.co.jp/citations?user=rGD6khYAAAAJ" class="text-science-600 font-medium underline">View all on Google Scholar</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards" class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12">
+            
+            <div class="fade-up">
+                <h2 class="text-3xl font-serif font-bold text-slate-900 mb-8 flex items-center gap-3">
+                    <span>🏆</span> Awards
+                </h2>
+                <ul class="space-y-4">
+                    <li class="flex gap-4 items-start">
+                        <div class="min-w-[60px] text-sm font-bold text-science-600 mt-1">2024</div>
+                        <div>
+                            <p class="font-semibold text-slate-800">EMEUNET Top 10 Abstracts (ACR & EULAR)</p>
+                            <p class="text-sm text-slate-500">Double recognition in a single year.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4 items-start">
+                        <div class="min-w-[60px] text-sm font-bold text-science-600 mt-1">2024</div>
+                        <div>
+                            <p class="font-semibold text-slate-800">Ursula and Fritz Melchers Travel Award</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4 items-start">
+                        <div class="min-w-[60px] text-sm font-bold text-science-600 mt-1">2023</div>
+                        <div>
+                            <p class="font-semibold text-slate-800">Lindau Nobel Laureate Meeting</p>
+                            <p class="text-sm text-slate-500">Selected as Young Scientist participant.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4 items-start">
+                        <div class="min-w-[60px] text-sm font-bold text-science-600 mt-1">2023</div>
+                        <div>
+                            <p class="font-semibold text-slate-800">EULAR Abstract Award</p>
+                        </div>
+                    </li>
+                </ul>
+                <a href="https://researchmap.jp/shinji04/awards" target="_blank" class="inline-block mt-6 text-sm text-science-600 hover:underline font-medium">View full list on ResearchMap →</a>
+            </div>
+
+            <div class="fade-up" style="transition-delay: 100ms">
+                <h2 class="text-3xl font-serif font-bold text-slate-900 mb-8 flex items-center gap-3">
+                    <span>📖</span> Recent Works
+                </h2>
+                
+                <div class="bg-white p-6 rounded-xl border-l-4 border-science-500 shadow-sm mb-8">
+                    <h3 class="text-xs font-bold text-science-500 tracking-widest uppercase mb-2">Active Grant</h3>
+                    <p class="text-lg font-bold text-slate-900">JSPS Grant‑in‑Aid for JSPS Fellows (PI)</p>
+                    <p class="text-slate-600 mt-1">Stratification of rheumatic diseases with multi‑omics data</p>
+                    <p class="text-xs text-slate-400 mt-2">2022 - 2025</p>
+                </div>
+
+                <h3 class="text-lg font-bold text-slate-900 mb-4">Book Contributions</h3>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="pl-4 border-l-2 border-slate-300">
+                        <strong>Diagnosis Essentials</strong> <span class="text-slate-500">(Yodosha, 2025)</span>
+                    </li>
+                    <li class="pl-4 border-l-2 border-slate-300">
+                        <strong>Internal Medicine Board Review</strong> <span class="text-slate-500">(Igaku‑Shoin, 2024)</span>
+                    </li>
+                    <li class="pl-4 border-l-2 border-slate-300">
+                        <strong>Q&A in Internal Medicine</strong> <span class="text-slate-500">(Nankodo, 2024)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif font-bold text-slate-900 mb-10 text-center fade-up">Professional Activities</h2>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                <div class="flex items-center p-4 bg-slate-50 rounded-lg border border-slate-100 fade-up">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                    <span class="font-medium text-slate-700">ACR International Adviser (2024-)</span>
+                </div>
+                <div class="flex items-center p-4 bg-slate-50 rounded-lg border border-slate-100 fade-up">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    <span class="font-medium text-slate-700">RMD Open Social Media Editor</span>
+                </div>
+                <div class="flex items-center p-4 bg-slate-50 rounded-lg border border-slate-100 fade-up">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                    <span class="font-medium text-slate-700">ACR Social Media Ambassador</span>
+                </div>
+                <div class="flex items-center p-4 bg-slate-50 rounded-lg border border-slate-100 fade-up">
+                    <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                    <span class="font-medium text-slate-700">ARD Guest Editor (2024)</span>
+                </div>
+                <div class="flex items-center p-4 bg-slate-50 rounded-lg border border-slate-100 fade-up">
+                    <span class="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
+                    <span class="font-medium text-slate-700">Member, Japan College of Rheumatology</span>
+                </div>
+                <div class="flex items-center p-4 bg-slate-50 rounded-lg border border-slate-100 fade-up">
+                    <span class="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
+                    <span class="font-medium text-slate-700">Member, IMACS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-300 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+            <h4 class="text-white font-serif text-lg font-bold">Shinji Izuka, M.D., Ph.D.</h4>
+            <p class="text-sm text-slate-500 mt-1">The University of Tokyo Hospital</p>
+        </div>
+        
+        <div class="flex gap-6">
+            <a href="https://www.researchgate.net/profile/Shinji-Izuka" class="hover:text-white transition">ResearchGate</a>
+            <a href="https://bsky.app/profile/shinjiizuka.bsky.social" class="hover:text-white transition">Bluesky</a>
+            <a href="http://ryumachi.umin.jp/" class="hover:text-white transition">Dept. Website</a>
+        </div>
+        
+        <p class="text-xs text-slate-600">&copy; <span id="year"></span> S. Izuka. All rights reserved.</p>
+      </div>
+    </footer>
   </main>
 
-  <footer class="bg-slate-900 text-slate-400 text-center py-8 mt-12">
-    <p>&copy; <span id="year"></span> Shinji Izuka. All rights reserved.</p>
-  </footer>
-
   <script>
-    // mobile menu toggle
+    // 1. Dynamic Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 2. Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    }
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-    // active link switching (desktop & mobile)
-    const navLinks = [...document.querySelectorAll('header nav a.nav-item')];
-    const sections = [...document.querySelectorAll('main section[id]')];
-    
-    function setActiveLink() {
-        if (typeof pageYOffset === 'undefined' || !document.querySelector('header')) return;
-        const headerHeight = document.querySelector('header').offsetHeight;
-        let currentSectionId = '';
+    // 3. Intersection Observer for Fade-up Animations
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, observerOptions);
 
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // 4. Active Link Highlighter & Navbar Background
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    window.addEventListener('scroll', () => {
+        // Navbar styling on scroll
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+
+        // Scroll Spy
+        let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerHeight - 40; 
-            if (pageYOffset >= sectionTop) {
-                currentSectionId = section.id;
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
             }
         });
-
-        if (!currentSectionId && sections.length > 0 && pageYOffset < (sections[0].offsetTop - headerHeight - 40)) {
-             currentSectionId = sections[0].id;
-        }
 
         navLinks.forEach(link => {
             link.removeAttribute('aria-current');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
+            if (link.getAttribute('href').includes(current)) {
                 link.setAttribute('aria-current', 'page');
+                link.classList.add('text-science-800');
+            } else {
+                link.classList.remove('text-science-800');
             }
         });
-    }
-    window.addEventListener('scroll', setActiveLink);
-    window.addEventListener('load', setActiveLink);
-    
-    if (mobileMenu) {
-        const mobileNavLinks = mobileMenu.querySelectorAll('a.nav-item');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                setTimeout(setActiveLink, 50); 
-            });
-        });
-    }
-
-    // intersection fade‑in
-    const io = new IntersectionObserver((entries) => entries.forEach(({target, isIntersecting}) => {
-        if (isIntersecting) {
-            target.classList.add('show');
-            io.unobserve(target);
-        }
-    }), {threshold: 0.1});
-    document.querySelectorAll('.fade').forEach(el => io.observe(el));
-
-    // year
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
+    });
   </script>
 </body>
 </html>
