@@ -4,6 +4,7 @@ const SITE_DATA = {
     { id: "profile", href: "profile.html", label: "Profile" },
     { id: "research", href: "research.html", label: "Research" },
     { id: "publications", href: "publications.html", label: "Publications" },
+    { id: "talks", href: "talks.html", label: "Talks" },
     { id: "achievements", href: "achievements.html", label: "Achievements" },
     { id: "connect", href: "connect.html", label: "Connect" }
   ],
@@ -235,25 +236,127 @@ const SITE_DATA = {
       icon: "🧬",
       title: "Idiopathic Inflammatory Myopathies",
       copy: "I investigate disease heterogeneity, monocyte and macrophage biology, and tissue-level injury signatures across muscle and blood.",
-      tags: ["myositis", "monocytes", "tissue transcriptome"]
+      tags: ["myositis", "monocytes", "tissue transcriptome"],
+      image: "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800&q=70"
     },
     {
       icon: "🦋",
       title: "Systemic Lupus Erythematosus",
       copy: "My lupus work spans patient stratification, consensus building, and translational frameworks that aim to improve treatment precision.",
-      tags: ["SLE", "treat-to-target", "international consensus"]
+      tags: ["SLE", "treat-to-target", "international consensus"],
+      image: "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=800&q=70"
     },
     {
       icon: "📊",
       title: "Multi-Omics Stratification",
       copy: "Clinical phenotypes become more actionable when they are integrated with immunophenotyping, transcriptomics, and other omics layers.",
-      tags: ["multi-omics", "stratification", "biomarkers"]
+      tags: ["multi-omics", "stratification", "biomarkers"],
+      image: "https://images.pexels.com/photos/3825581/pexels-photo-3825581.jpeg?auto=compress&cs=tinysrgb&w=800&q=70"
     },
     {
       icon: "⚙️",
       title: "Computational Rheumatology",
       copy: "I use machine learning and bioinformatics to discover immune cell programs, classify disease states, and surface translational targets.",
-      tags: ["machine learning", "bioinformatics", "precision medicine"]
+      tags: ["machine learning", "bioinformatics", "precision medicine"],
+      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800&q=70"
+    }
+  ],
+  talks: [
+    {
+      date: "Sep 2025",
+      type: "Oral",
+      title: "Multi-Omics Stratification in Idiopathic Inflammatory Myopathies",
+      venue: "APLAR 2025 Annual Congress",
+      location: "Japan",
+      note: "APLAR 2025 Travel Award on JCR."
+    },
+    {
+      date: "Apr 2025",
+      type: "Oral",
+      title: "Immunophenotypic Profiling Across Immune-Mediated Diseases",
+      venue: "JCR 2025 Annual Meeting",
+      location: "Japan",
+      note: "JCR 2025 Excellent Abstract Award."
+    },
+    {
+      date: "Nov 2024",
+      type: "Poster",
+      title: "Machine Learning-Driven Immunophenotypic Stratification of Mixed Connective Tissue Disease",
+      venue: "ACR 2024 Convergence",
+      location: "Washington, D.C., USA",
+      note: "EMEUNET Top 10 Abstracts at ACR 2024. Tadamitsu Kishimoto International Travel Award."
+    },
+    {
+      date: "Jun 2024",
+      type: "Oral",
+      title: "B Cell Kinetics Across Immune-Mediated Disease: A Transcriptomic and Immunophenotyping Perspective",
+      venue: "EULAR 2024 Annual Congress",
+      location: "Vienna, Austria",
+      note: "EMEUNET Top 10 Abstracts at EULAR 2024."
+    },
+    {
+      date: "Apr 2024",
+      type: "Oral",
+      title: "Peripheral Blood Multi-Omics for Rheumatic Disease Stratification",
+      venue: "JCR 2024 Annual Meeting",
+      location: "Japan",
+      note: "JCR 2024 Excellent Abstract Award. Ursula and Fritz Melchers Travel Award."
+    },
+    {
+      date: "Nov 2023",
+      type: "Oral",
+      title: "Muscle Transcriptome in Idiopathic Inflammatory Myopathy: Monocyte Signatures and Skin Lesions",
+      venue: "ACR 2023 Convergence",
+      location: "San Diego, CA, USA",
+      note: "Selected for ACR-EULAR-APLAR Research Exchange Program."
+    },
+    {
+      date: "Jun 2023",
+      type: "Invited",
+      title: "Translational Multi-Omics in Autoimmune Rheumatology",
+      venue: "72nd Lindau Nobel Laureate Meeting",
+      location: "Lindau, Germany",
+      note: "Selected as Young Scientist, Physiology/Medicine cohort — one of ~600 young scientists worldwide."
+    },
+    {
+      date: "Jun 2023",
+      type: "Poster",
+      title: "Immunophenotypic Analysis of Myositis Subsets via Large-Scale Flow Cytometry",
+      venue: "EULAR 2023 Annual Congress",
+      location: "Milan, Italy",
+      note: "EULAR 2023 Abstract Award."
+    },
+    {
+      date: "Apr 2023",
+      type: "Oral",
+      title: "Multi-Omics Approaches to Rheumatic Disease Heterogeneity",
+      venue: "JCR 2023 Annual Meeting",
+      location: "Japan",
+      note: "JCR 2023 Excellent Abstract Award."
+    },
+    {
+      date: "Nov 2022",
+      type: "Poster",
+      title: "Large-Scale Multi-Omics Data for Prognostic Prediction in Rheumatic Diseases",
+      venue: "ACR 2022 Convergence",
+      location: "Philadelphia, PA, USA",
+      note: "EMEUNET Top 10 Abstracts at ACR 2022."
+    },
+    {
+      date: "Oct 2022",
+      type: "Oral",
+      title: "Stratification of Idiopathic Inflammatory Myopathies via Multi-Omics Profiling",
+      venue: "APLAR 2022 Congress on JCR",
+      location: "Japan",
+      note: "APLAR 2022 Excellent Abstract Award."
+    },
+    {
+      date: "Oct 2019",
+      type: "Poster",
+      title: "Clinical Outcomes in Connective Tissue Disease-Associated Interstitial Lung Disease",
+      venue: "APLAR 2019 Annual Congress",
+      location: "Taipei, Taiwan",
+      note: "APLAR 2019 Travel Grant."
     }
   ],
   profiles: [
@@ -503,12 +606,35 @@ function renderLinkCard(item) {
 
 function renderThemeCard(item) {
   const tags = item.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
+  const visual = item.image
+    ? `<div class="theme-card__visual" style="background-image:url('${escapeHtml(item.image)}')" aria-hidden="true">
+         <span class="theme-card__icon">${escapeHtml(item.icon)}</span>
+       </div>`
+    : `<div class="theme-card__icon" aria-hidden="true">${escapeHtml(item.icon)}</div>`;
   return `
     <article class="theme-card reveal">
-      <div class="theme-card__icon" aria-hidden="true">${escapeHtml(item.icon)}</div>
+      ${visual}
       <h3 class="theme-card__title">${escapeHtml(item.title)}</h3>
       <p class="list-note">${escapeHtml(item.copy)}</p>
       <div class="tag-row">${tags}</div>
+    </article>
+  `;
+}
+
+function renderTalkCard(item) {
+  const typeClass = item.type === "Invited" ? "tag--warm" : item.type === "Oral" ? "tag--signal" : "";
+  return `
+    <article class="talk-card reveal">
+      <div class="talk-card__header">
+        <span class="tag ${typeClass}">${escapeHtml(item.type)}</span>
+        <span class="talk-card__date">${escapeHtml(item.date)}</span>
+      </div>
+      <h3 class="talk-card__title">${escapeHtml(item.title)}</h3>
+      <div class="talk-card__venue">
+        <span class="talk-card__venue-name">${escapeHtml(item.venue)}</span>
+        <span class="talk-card__location">📍 ${escapeHtml(item.location)}</span>
+      </div>
+      <p class="list-note">${escapeHtml(item.note)}</p>
     </article>
   `;
 }
@@ -547,6 +673,9 @@ function renderDataBlocks() {
   renderList("memberships-list", SITE_DATA.memberships, renderMembershipCard);
 
   renderList("profiles-list", SITE_DATA.profiles, renderLinkCard);
+
+  renderList("talks-list", SITE_DATA.talks, renderTalkCard);
+  renderList("talks-featured", SITE_DATA.talks.slice(0, 3), renderTalkCard);
 }
 
 function initReveal() {
@@ -577,7 +706,7 @@ function initReveal() {
 }
 
 function initSpotlights() {
-  document.querySelectorAll(".spotlight-card, .panel-card, .publication-card, .timeline-card, .theme-card, .mini-card, .link-card").forEach((card) => {
+  document.querySelectorAll(".spotlight-card, .panel-card, .publication-card, .timeline-card, .theme-card, .mini-card, .link-card, .talk-card").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
       const x = ((event.clientX - rect.left) / rect.width) * 100;

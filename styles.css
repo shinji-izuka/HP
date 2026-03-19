@@ -1111,6 +1111,169 @@ button {
   }
 }
 
+/* ── Page hero with background image ───────────────────────── */
+.page-hero__panel--visual {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.page-hero__panel--visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(202, 160, 102, 0.75), transparent 45%),
+    linear-gradient(180deg, rgba(6, 10, 16, 0.78) 0%, rgba(6, 10, 16, 0.92) 100%);
+  pointer-events: none;
+}
+
+.page-hero__panel--visual > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Talks legend ───────────────────────────────────────────── */
+.talks-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* ── Talk card ──────────────────────────────────────────────── */
+.talk-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(9, 13, 20, 0.96), rgba(6, 10, 16, 0.92));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  padding: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.talk-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(420px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(11, 154, 177, 0.1), transparent 40%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.talk-card:hover::before {
+  opacity: 1;
+}
+
+.talk-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.talk-card__date {
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.talk-card__title {
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.talk-card__venue {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.talk-card__venue-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.talk-card__location {
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+}
+
+/* ── Talks grid ─────────────────────────────────────────────── */
+.talks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* ── Tag signal variant ─────────────────────────────────────── */
+.tag--signal {
+  background: var(--signal-soft);
+  color: var(--signal);
+}
+
+/* ── Research theme visual image header ─────────────────────── */
+.theme-card__visual {
+  margin: -22px -22px 4px;
+  height: 130px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 22px;
+}
+
+.theme-card__visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 10, 16, 0.28) 0%, rgba(6, 10, 16, 0.88) 100%);
+  pointer-events: none;
+}
+
+.theme-card__visual .theme-card__icon {
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 13, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  font-size: 1.3rem;
+}
+
+/* ── Section more link ──────────────────────────────────────── */
+.section-more {
+  margin-top: 22px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Process grid: 4 columns on wide screens ────────────────── */
+@media (min-width: 901px) {
+  .process-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .talks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
