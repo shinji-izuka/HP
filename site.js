@@ -116,22 +116,22 @@ const SITE_DATA = {
   ],
   books: [
     {
-      title: "「この患者さんリウマチ・膠原病かも？」と迷ったときの診断のカンどころ",
+      title: "Diagnostic Essentials When Rheumatic or Connective Tissue Disease Is Suspected",
       meta: "Book chapter · 2025",
       copy: "Differential diagnosis contribution for clinicians evaluating possible rheumatic or collagen diseases."
     },
     {
-      title: "THE内科専門医問題集",
+      title: "Internal Medicine Specialist Problem Collection",
       meta: "Question author · 2024",
       copy: "Board-style problem writing for internal medicine specialist preparation."
     },
     {
-      title: "患者さんからよく尋ねられる内科診療のQuestion",
+      title: "Questions Frequently Asked by Patients in Internal Medicine",
       meta: "Clinical writing · Apr 2024",
       copy: "Researchmap lists a contribution on dermatomyositis-related cancer anxiety in routine clinical communication."
     },
     {
-      title: "一目瞭然! 目で診る症例 問題編",
+      title: "Visual Case Challenge",
       meta: "Clinical education · Dec 2023",
       copy: "Visual case-based contribution in the Journal of the Japanese Society of Internal Medicine."
     }
@@ -383,7 +383,6 @@ function renderHeader() {
         </a>
         <nav class="desktop-nav" aria-label="Main navigation">${desktopLinks}</nav>
         <div class="header-actions">
-          ${makeLink("connect.html", "Profiles", "header-link")}
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-menu-toggle>
             <span aria-hidden="true">☰</span>
             <span class="sr-only">Open menu</span>
@@ -440,8 +439,7 @@ function renderFooter() {
         <div class="site-footer__panel">
           <div>
             <h2>Shinji Izuka, M.D., Ph.D.</h2>
-            <p>Rheumatology, multi-omics, translational immunology, and precision medicine at The University of Tokyo Hospital.</p>
-            <p class="muted">Public-profile refresh built from researchmap, PubMed, KAKEN, and University of Tokyo-linked pages.</p>
+            <p>Rheumatology, myositis, SLE, and multi-omics research at The University of Tokyo Hospital.</p>
             <p class="muted">&copy; <span data-current-year></span> Shinji Izuka</p>
           </div>
           <div class="site-footer__links">${links}</div>
@@ -526,9 +524,9 @@ function renderMembershipCard(item) {
 }
 
 function renderDataBlocks() {
-  renderList("home-publications", SITE_DATA.homepagePublications, renderPublicationCard);
+  renderList("home-publications", SITE_DATA.homepagePublications.slice(0, 3), renderPublicationCard);
   renderList("home-awards", SITE_DATA.awards.slice(0, 5), renderTimelineCard);
-  renderList("home-links", SITE_DATA.profiles.slice(0, 6), renderLinkCard);
+  renderList("home-links", SITE_DATA.profiles.slice(0, 4), renderLinkCard);
 
   renderList("profile-timeline", SITE_DATA.timeline, renderTimelineCard);
   renderList("research-themes", SITE_DATA.themes, renderThemeCard);
